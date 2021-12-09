@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Cookie;
 
 class isUserCity
 {
@@ -16,7 +17,7 @@ class isUserCity
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session('city_id')) {
+        if (!Cookie::get('city_id')) {
             return redirect()->route('city');
         }
 

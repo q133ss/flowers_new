@@ -22,7 +22,7 @@ use App\Http\Controllers\CityController;
 
 Route::get('/city', [CityController::class, 'index'])->name('city');
 
-Route::get('/set-city', [CityController::class, 'setCity'])->name('set.city');
+Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city');
 
 Route::middleware(['isUserCity'])->group(function () {
     Route::get('/', [CatalogController::class, 'index'])->name('home');

@@ -55,7 +55,7 @@
                         <select id="indexCity">
                             <option value=""></option>
                             @foreach($cities as $key => $city)
-                            <option onclick="city_change('{{$city['id']}}')" value="{{$city['title']}}">{{$city['title']}}</option>
+                            <option value="{{$city['id']}}">{{$city['title']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -181,8 +181,7 @@
 
 <script>
     $('#indexCity').change(function(){
-        history.pushState(null, null, '?city='+$(this).val());
-        //location.href='{{route('set.city')}}'
+        location.href='/set-city/'+$(this).val()
     })
 </script>
 

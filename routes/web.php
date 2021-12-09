@@ -9,6 +9,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UrgentlyController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,9 @@ Route::middleware(['isUserCity'])->group(function () {
 
     Route::get('/quiz', [QuizController::class, 'index']);
     Route::get('/urgently', [UrgentlyController::class, 'index']);
+
+    //NEWS
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 });
 
 Route::get('/order', [OrderController::class, 'index']);

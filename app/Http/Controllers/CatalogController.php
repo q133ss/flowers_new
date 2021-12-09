@@ -24,15 +24,16 @@ class CatalogController extends Controller
     public function category(Request $request, $id)
     {
         $category = Category::byId($id);
+        $categoryNotFound = Category::byId(1000);
         $products = Product::byCategory($id, $request->query());
 
-        dd($category, $products);
+        dd($category, $categoryNotFound, $products);
         // Возвращает либо страницу целиком, либо html для модального окна
     }
 
     public function product()
     {
-        $product = Product::findOrFail($id);
+        $product = Product::byId($id);
         $addits = Category::byType(Category::TYPE_ADDITIONALLY);
 
         // Возвращает html для модального окна

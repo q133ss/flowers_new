@@ -105,6 +105,16 @@ class Product extends Model implements Sortable
         return $this->belongsTo(\App\Models\Category::class, 'category_id');
     }
 
+    
+    public function scopeByCategory($model, $type) {
+
+    }
+
+    
+    public function scopeById($model, $id) {
+
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/

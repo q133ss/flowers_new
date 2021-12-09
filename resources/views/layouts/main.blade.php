@@ -874,9 +874,11 @@
                                                 <div class="model-header__link-btn" id="modelClientRegistration">Зарегистрироваться</div>
                                             </div>
                                             <div class="model-header__entry">
+                                                <form method="POST" action="{{ route('login') }}">
+                                                    @csrf
                                                 <div class="model-header__entry-title">Войти</div>
                                                 <div class="model-header__entry-email">
-                                                    <input placeholder="Ваш email" type="text" class="model-header__entry-email-input" id="modelHeaderEmail">
+                                                    <input placeholder="Ваш email" type="text" name="email" value="{{ old('email') }}" class="model-header__entry-email-input @error('email') is-invalid @enderror" id="modelHeaderEmail">
                                                     <label for="modelHeaderEmail">Ваш email</label>
                                                     <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.25C0 0.697715 0.447715 0.25 1 0.25H19C19.5523 0.25 20 0.697715 20 1.25V14.75C20 15.3023 19.5523 15.75 19 15.75H1C0.447715 15.75 0 15.3023 0 14.75V1.25ZM2 2.25V13.75H18V2.25H2Z" fill="#16B8C3"/>
@@ -885,7 +887,7 @@
 
                                                 </div>
                                                 <div class="model-header__entry-password">
-                                                    <input placeholder="Ваш пароль" type="text" class="model-header__entry-password-input" id="modelHeaderPassword">
+                                                    <input placeholder="Ваш пароль" name="password" type="password" class="model-header__entry-password-input" id="modelHeaderPassword">
                                                     <label for="modelHeaderPassword">Ваш пароль</label>
                                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0 7.75C0 7.19772 0.447715 6.75 1 6.75H19C19.5523 6.75 20 7.19772 20 7.75V19C20 19.5523 19.5523 20 19 20H1C0.447715 20 0 19.5523 0 19V7.75ZM2 8.75V18H18V8.75H2Z" fill="#16B8C3"/>
@@ -895,6 +897,7 @@
 
                                                 </div>
                                                 <button class="model-header__entry-btn"><a href="#">Войти</a></button>
+                                                </form>
                                                 <ul class="model-header__entry-line">
                                                     <li class="model-header__entry-line-hr"></li>
                                                     <li class="model-header__entry-line-text">или</li>

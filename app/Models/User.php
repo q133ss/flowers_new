@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -34,7 +35,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     public $table = 'users';
 
@@ -86,7 +87,7 @@ class User extends Authenticatable
         'email' => 'required|string|max:255',
         'email_verified_at' => 'nullable',
         'password' => 'required|string|max:255',
-        'two_factor_secret' => 'required|string',
+        'two_factor_secret' => 'nullable|string',
         'two_factor_recovery_codes' => 'required|string',
         'phone' => 'nullable|string|max:255',
         'money' => 'required|numeric',

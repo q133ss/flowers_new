@@ -22,6 +22,8 @@ use App\Http\Controllers\CityController;
 
 Route::get('/city', [CityController::class, 'index'])->name('city');
 
+Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city');
+
 Route::middleware(['isUserCity'])->group(function () {
     Route::get('/', [CatalogController::class, 'index'])->name('home');
     Route::get('/product/{id}', [CatalogController::class, 'product']);
@@ -43,15 +45,15 @@ Route::get('/order', [OrderController::class, 'index']);
 
 // /city Добавить модалку города
 //     CityController
-//     /city/index.blade.php
+//     /city/city.blade.php
 // / переделать на всплывающее окно выбор города
-// /catalog переделать в / 
+// /catalog переделать в /
 //     Банеры могут открывать категории, продукты (в модальном окне), урлы
 //     За доп деньги сделать возможность настроки для регионов.
 //     Типа вы не говорили что надо.
 //     А мы так же через path сделаем, быстро и красиво
-//     ShopController 
-//     /shop/index.blade.php
+//     ShopController
+//     /shop/city.blade.php
 //     /shop/cat.blade.php
 //     /shop/product.blade.php
 // /constructor

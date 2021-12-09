@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="header-profile__logo">
-            <div class="header-profile__logo-img">
+            <div class="header-profile__logo-img" onclick="location.href='/'">
                 <svg width="50" height="75" viewBox="0 0 50 75" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect width="50" height="75" fill="url(#pattern0)"/>
                     <defs>

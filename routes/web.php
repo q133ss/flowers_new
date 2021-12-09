@@ -22,6 +22,8 @@ use App\Http\Controllers\Profile\HistoryController;
 use App\Http\Controllers\Profile\OfferController;
 use App\Http\Controllers\Profile\PolicyController;
 use App\Http\Controllers\Profile\SettingsController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,12 @@ Route::middleware(['isUserCity'])->group(function () {
         //EDIT
         Route::post('/settings', [SettingsController::class, 'edit'])->name('profile.edit');
     });
+
+    //ABOUT US
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+    //CONTACT
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 });
 

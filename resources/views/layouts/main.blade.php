@@ -1464,13 +1464,12 @@
                 <div class="footer__block-text-info">
                     <div class="footer__block-text-info-title">Информация</div>
                     <ul class="footer__block-text-info-list">
-                        <li class="footer__block-text-info-item">Популярные вопросы</li>
-                        <li class="footer__block-text-info-item">Новости и скидки</li>
-                        <li class="footer__block-text-info-item">Оплата</li>
+                        <li class="footer__block-text-info-item" onclick="location.href='{{route('news.index')}}'">Новости и скидки</li>
+                        <li class="footer__block-text-info-item" onclick="location.href='{{route('about')}}'">Оплата</li>
                         <li class="footer__block-text-info-item">О нас</li>
                         <li class="footer__block-text-info-item">Договор оферты</li>
                         <li class="footer__block-text-info-item">Политика конфиденциальности</li>
-                        <li class="footer__block-text-info-item">Контакты</li>
+                        <li class="footer__block-text-info-item" onclick="location.href='{{route('contact')}}'">Контакты</li>
                     </ul>
                 </div>
                 <div class="footer__block-text-logo">

@@ -11,9 +11,11 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "infyomlabs/laravel-generator": "^3.0",
         "kalnoy/nestedset": "^6.0",
+        "laravel/fortify": "^1.8",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.4",
         "spatie/eloquent-sortable": "^4.0"
     },
     "require-dev": {

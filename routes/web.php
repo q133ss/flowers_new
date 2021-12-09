@@ -22,7 +22,7 @@ use App\Http\Controllers\NewsController;
 */
 
 Route::get('/city', [CityController::class, 'index'])->name('city');
-
+Auth::routes();
 Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city');
 
 Route::middleware(['isUserCity'])->group(function () {
@@ -37,12 +37,13 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::get('/constructor', [ConstructorController::class, 'index']);
     Route::get('/constructor/{id}', [ConstructorController::class, 'category']);
 
-    Route::get('/quiz', [QuizController::class, 'index']);
     Route::get('/urgently', [UrgentlyController::class, 'index']);
 
     //NEWS
     Route::get('/news', [NewsController::class, 'index'])->name('news.index');
     Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');
+    //QUIZ
+    Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
 });
 
 Route::get('/order', [OrderController::class, 'index']);
@@ -66,3 +67,7 @@ Route::get('/order', [OrderController::class, 'index']);
 // /urgently
 // /aditionaly
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

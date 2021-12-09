@@ -18,14 +18,17 @@ class CatalogController extends Controller
         $banners = [];
         $cats = Category::byType(Category::TYPE_PRODUCTS);
         $addits = Category::byType(Category::TYPE_ADDITIONALLY);
-        dd($banners, $cats->with('child')->get(), $addits->get());
+        dd($banners,
+        $cats->get(),
+        $addits->get()
+    );
     }
 
     public function category(Request $request, $id)
     {
         $category = Category::byId($id);
-        $categoryNotFound = Category::byId(1000);
-        $products = Product::byCategory($id, $request->query());
+        //$categoryNotFound = Category::byId(1000);
+        //$products = Product::byCategory($id, $request->query());
 
         dd($category, $categoryNotFound, $products);
         // Возвращает либо страницу целиком, либо html для модального окна

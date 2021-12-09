@@ -162,13 +162,13 @@ class Category extends Model
             '(SELECT cp.`status` FROM category_paths AS cp WHERE c.id = cp.category_id AND cp.model = "Region" AND cp.model_id = "'.$city->region->id.'" AND cp.`status` IS NOT NULL),'.
             '(SELECT cp.`status` FROM category_paths AS cp WHERE c.id = cp.category_id AND cp.model = "Country" AND cp.model_id = "'.$city->region->country->id.'" AND cp.`status` IS NOT NULL),'.
             'c.`status`)))'
-        )->where('c.type', $type)->where('id', $this->parent_id);
+        )->where('id', $this->parent_id);
     }
 
     public function child()
     {
         $city = City::find(\Cookie::get('city_id'));
-        return $model->from('categories AS c')
+        return self::from('categories AS c')
         ->select(['c.id', 'c.name', 'c.img', 'c.descr', DB::raw(
             'COALESCE('.
             '(SELECT cp.`charge` FROM category_paths AS cp WHERE c.id = cp.category_id AND cp.model = "City" AND cp.model_id = "'.$city->id.'" AND cp.`charge` IS NOT NULL),'.
@@ -180,6 +180,6 @@ class Category extends Model
             '(SELECT cp.`status` FROM category_paths AS cp WHERE c.id = cp.category_id AND cp.model = "Region" AND cp.model_id = "'.$city->region->id.'" AND cp.`status` IS NOT NULL),'.
             '(SELECT cp.`status` FROM category_paths AS cp WHERE c.id = cp.category_id AND cp.model = "Country" AND cp.model_id = "'.$city->region->country->id.'" AND cp.`status` IS NOT NULL),'.
             'c.`status`)))'
-        )->where('c.type', $type)->where('parent_id', $this->id);
+        )->where('parent_id', $this->id);
     }
 }

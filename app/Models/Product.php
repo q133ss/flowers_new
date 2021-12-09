@@ -106,13 +106,57 @@ class Product extends Model implements Sortable
     }
 
     
-    public function scopeByCategory($model, $type) {
-
+    public function scopeByCategory($model, $id) {
+        return $this->getDefProds()->where('category_id', $id);
     }
 
     
     public function scopeById($model, $id) {
+        return $this->getDefProds()->where('id', $id);
+    }
 
+    private function getDefProds(){
+        $city = City::find(\Cookie::get('city_id'));
+        return self::from('products AS p')
+        ->select([
+            'p.id', 'p.name', 'p.img', 'p.descr',
+            DB::raw(
+                'COALESCE('.
+                    '(SELECT pp.`price` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "City" AND pp.model_id = "'.$city->id.'" AND pp.`price` IS NOT NULL),'.
+                    '(SELECT pp.`price` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Region" AND pp.model_id = "'.$city->region->id.'" AND pp.`price` IS NOT NULL),'.
+                    '(SELECT pp.`price` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Country" AND pp.model_id = "'.$city->region->country->id.'" AND pp.`price` IS NOT NULL),'.
+                    'p.sale'.
+                ') AS price'
+            ),
+            DB::raw(
+                'COALESCE('.
+                    '(SELECT pp.`score` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "City" AND pp.model_id = "'.$city->id.'" AND pp.`score` IS NOT NULL),'.
+                    '(SELECT pp.`score` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Region" AND pp.model_id = "'.$city->region->id.'" AND pp.`score` IS NOT NULL),'.
+                    '(SELECT pp.`score` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Country" AND pp.model_id = "'.$city->region->country->id.'" AND pp.`score` IS NOT NULL),'.
+                    'p.sale'.
+                ') AS score'
+            ),
+            DB::raw(
+                'COALESCE('.
+                    '(SELECT pp.`sale` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "City" AND pp.model_id = "'.$city->id.'" AND pp.`sale` IS NOT NULL),'.
+                    '(SELECT pp.`sale` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Region" AND pp.model_id = "'.$city->region->id.'" AND pp.`sale` IS NOT NULL),'.
+                    '(SELECT pp.`sale` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Country" AND pp.model_id = "'.$city->region->country->id.'" AND pp.`sale` IS NOT NULL),'.
+                    'p.sale'.
+                ') AS sale'
+            ),
+            DB::raw(
+                'COALESCE('.
+                    '(SELECT pp.`charge` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "City" AND pp.model_id = "'.$city->id.'" AND pp.`charge` IS NOT NULL),'.
+                    '(SELECT pp.`charge` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Region" AND pp.model_id = "'.$city->region->id.'" AND pp.`charge` IS NOT NULL),'.
+                    '(SELECT pp.`charge` FROM product_paths AS pp WHERE p.id = pp.product_id AND pp.model = "Country" AND pp.model_id = "'.$city->region->country->id.'" AND pp.`charge` IS NOT NULL)'.
+                ') AS charge'
+            )
+        ])->whereRaw('(1 = (SELECT COALESCE('.
+            '(SELECT p.`status` FROM product_paths AS pp WHERE p.id = pp.product_id AND cp.model = "City" AND pp.model_id = "'.$city->id.'" AND pp.`status` IS NOT NULL),'.
+            '(SELECT p.`status` FROM product_paths AS pp WHERE p.id = pp.product_id AND cp.model = "Region" AND pp.model_id = "'.$city->region->id.'" AND pp.`status` IS NOT NULL),'.
+            '(SELECT p.`status` FROM product_paths AS pp WHERE p.id = pp.product_id AND cp.model = "Country" AND pp.model_id = "'.$city->region->country->id.'" AND pp.`status` IS NOT NULL),'.
+            'p.`status`)))'
+        );
     }
 
     /**

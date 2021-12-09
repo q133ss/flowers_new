@@ -27,113 +27,14 @@
                     </div>
                 </div>
                 <div class="new-content__block-table">
-                    <div class="new-content__block-table-1">
-                        <div class="new-content__block-table-1-date">04.03.2021</div>
-                        <div class="new-content__block-table-1-title">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                        <div class="new-content__block-table-1-text">
-                            <div class="new-content__block-table-1-text-item">Дорогие клиенты! Хотим ознакомить Вас с режимом работы наших розничных магазинов сети Мосцветторг в праздничные дни 8 Марта.</div>
-                            <div class="new-content__block-table-1-text-link"><a href="#">Читать далее</a></div>
-                        </div>
-                    </div>
-                    <div class="new-content__block-table-2">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-3">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-4">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-5">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-6">
-                        <div class="new-content__block-table-6-date">04.03.2021</div>
-                        <div class="new-content__block-table-6-title">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                        <div class="new-content__block-table-6-text">
-                            <div class="new-content__block-table-6-text-item">Дорогие клиенты! Хотим ознакомить Вас с режимом работы наших розничных магазинов сети Мосцветторг в праздничные дни 8 Марта.</div>
-                            <div class="new-content__block-table-6-text-link"><a href="#">Читать далее</a></div>
-                        </div>
-                    </div>
-                    <div class="new-content__block-table-7">
-                        <div class="new-content__block-table-7-date">04.03.2021</div>
-                        <div class="new-content__block-table-7-title">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                        <div class="new-content__block-table-7-text">
-                            <div class="new-content__block-table-7-text-item">Дорогие клиенты! Хотим ознакомить Вас с режимом работы наших розничных магазинов сети Мосцветторг в праздничные дни 8 Марта.</div>
-                            <div class="new-content__block-table-7-text-link"><a href="#">Читать далее</a></div>
-                        </div>
-                    </div>
-                    <div class="new-content__block-table-8">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-9">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
+                    @include('news.items', compact('news'))
                 </div>
-                <div class="new-content__block-table-add display-n">
-                    <div class="new-content__block-table-add-1">
-                        <div class="new-content__block-table-add-1-date">04.03.2021</div>
-                        <div class="new-content__block-table-add-1-title">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                        <div class="new-content__block-table-add-1-text">
-                            <div class="new-content__block-table-add-1-text-item">Дорогие клиенты! Хотим ознакомить Вас с режимом работы наших розничных магазинов сети Мосцветторг в праздничные дни 8 Марта.</div>
-                            <div class="new-content__block-table-add-1-text-link"><a href="#">Читать далее</a></div>
-                        </div>
-                    </div>
-                    <div class="new-content__block-table-add-2">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-add-3">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-add-4">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-add-5">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-add-6">
-                        <div class="new-content__block-table-add-6-date">04.03.2021</div>
-                        <div class="new-content__block-table-add-6-title">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                        <div class="new-content__block-table-add-6-text">
-                            <div class="new-content__block-table-add-6-text-item">Дорогие клиенты! Хотим ознакомить Вас с режимом работы наших розничных магазинов сети Мосцветторг в праздничные дни 8 Марта.</div>
-                            <div class="new-content__block-table-add-6-text-link"><a href="#">Читать далее</a></div>
-                        </div>
-                    </div>
-                    <div class="new-content__block-table-add-7">
-                        <div class="new-content__block-table-add-7-date">04.03.2021</div>
-                        <div class="new-content__block-table-add-7-title">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                        <div class="new-content__block-table-add-7-text">
-                            <div class="new-content__block-table-add-7-text-item">Дорогие клиенты! Хотим ознакомить Вас с режимом работы наших розничных магазинов сети Мосцветторг в праздничные дни 8 Марта.</div>
-                            <div class="new-content__block-table-add-7-text-link"><a href="#">Читать далее</a></div>
-                        </div>
-                    </div>
-                    <div class="new-content__block-table-add-8">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                    <div class="new-content__block-table-add-9">
-                        <div class="new-content__block-table-2-data">04.03.2021</div>
-                        <div class="new-content__block-table-2-text">Режим работы розничных магазинов сети в праздничные дни 7-8 Марта</div>
-                    </div>
-                </div>
+
                 <div class="new-content__block-next">
                     ЕЩЕ НОВОСТИ
                     <div class="new-content__block-next-hr"></div>
                 </div>
-                <div class="new-content__block-prev display-n">
-                    СКРЫТЬ
-                    <div class="new-content__block-prev-hr"></div>
-                </div>
+
             </div>
         </div>
     </div>

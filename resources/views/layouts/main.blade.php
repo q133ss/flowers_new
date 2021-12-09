@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
 </head>
 <body>
 
@@ -351,7 +351,7 @@
                         <a href="#">
                             <div class="menu__block-title-logo">
                                 <div class="menu__block-title-logo-item">
-                                    <img src="./img/logo.png" alt="logo">
+                                    <img src="/img/logo.png" alt="logo">
                                 </div>
                                 <div class="menu__block-title-logo-text">
                                     Beehappy
@@ -391,10 +391,10 @@
                     <div class="menu__block-contact">
                         <div class="menu__block-contact-fon">
                             <div class="menu__block-contact-fon-black">
-                                <img src="./img/catalog/rgb-circle.png" alt="">
+                                <img src="/img/catalog/rgb-circle.png" alt="">
                             </div>
                             <div class="menu__block-contact-fon-white">
-                                <img src="./img/catalog/rgb-circle.png" alt="">
+                                <img src="/img/catalog/rgb-circle.png" alt="">
                             </div>
                             <div class="menu__block-contact-fon-text">Поменять цветовую тему сайта</div>
                         </div>
@@ -615,7 +615,7 @@
             </div>
         </div>
         <div class="header__block">
-            <a href="index.html">
+            <a href="/">
                 <div class="header__block-logo">
                     <div class="header__block-logo-item">
                         <svg width="50" height="75" viewBox="0 0 50 75" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1116,9 +1116,9 @@
     <div class="media-header__click"></div>
     <div class="media-header__block">
         <div class="media-header__block-client">
-            <a href="index.html">
+            <a href="/">
                 <div class="media-header__block-client-img">
-                    <img src="./img/logo.png" alt="logo">
+                    <img src="/img/logo.png" alt="logo">
                     <div class="media-header__block-client-img-title">Beehappy</div>
                 </div>
             </a>
@@ -1440,7 +1440,7 @@
             <div class="footer__block-media-logo">
                 <div class="footer__block-media-logo-item">
                     <div class="footer__block-media-logo-img">
-                        <img src="./img/logo.png" alt="logo">
+                        <img src="/img/logo.png" alt="logo">
                     </div>
                     <div class="footer__block-media-logo-title">BeEhappy</div>
                 </div>
@@ -1473,7 +1473,7 @@
                 <div class="footer__block-text-logo">
                     <div class="footer__block-text-logo-item">
                         <div class="footer__block-text-logo-img">
-                            <img src="./img/logo.png" alt="logo">
+                            <img src="/img/logo.png" alt="logo">
                         </div>
                         <div class="footer__block-text-logo-title">BeEhappy</div>
                     </div>
@@ -1552,6 +1552,6 @@
 
 
 
-<script src="js/script.min.js"></script>
+<script src="/js/script.min.js"></script>
 </body>
 </html>

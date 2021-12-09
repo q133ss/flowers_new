@@ -42,6 +42,7 @@ Route::middleware(['isUserCity'])->group(function () {
 
     //NEWS
     Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');
 });
 
 Route::get('/order', [OrderController::class, 'index']);

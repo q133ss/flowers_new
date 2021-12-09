@@ -24,6 +24,9 @@ use App\Http\Controllers\Profile\PolicyController;
 use App\Http\Controllers\Profile\SettingsController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OffersController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminNewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +65,7 @@ Route::middleware(['isUserCity'])->group(function () {
 
     //ACCOUNT
     Route::group(['prefix' => 'account', 'middleware' => ['profileCheck']], function(){
-        Route::get('/status', [StatusController::class, 'index'])->name('profile.index');
+        Route::get('/', [StatusController::class, 'index'])->name('profile.index');
         Route::get('/orders', [OrdersController::class, 'index'])->name('profile.orders');
         Route::get('/favorite', [FavoriteController::class, 'index'])->name('profile.favorite');
         Route::get('/balls', [BallsController::class, 'index'])->name('profile.balls');
@@ -78,11 +81,21 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::post('/settings', [SettingsController::class, 'edit'])->name('profile.edit');
     });
 
+    //ADMIN ROUTS
+    Route::group(['prefix' => 'admin','middleware' => ['role:admin']], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
+        Route::resource('admin_news', AdminNewsController::class);
+    });
+
     //ABOUT US
     Route::get('/about', [AboutController::class, 'index'])->name('about');
 
     //CONTACT
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+    //Public offer
+    Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
+    Route::get('/policy', [OffersController::class, 'policy'])->name('policy');
 
 });
 
@@ -110,4 +123,4 @@ Route::get('/order', [OrderController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

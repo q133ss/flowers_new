@@ -1467,8 +1467,8 @@
                         <li class="footer__block-text-info-item" onclick="location.href='{{route('news.index')}}'">Новости и скидки</li>
                         <li class="footer__block-text-info-item" onclick="location.href='{{route('about')}}'">Оплата</li>
                         <li class="footer__block-text-info-item">О нас</li>
-                        <li class="footer__block-text-info-item">Договор оферты</li>
-                        <li class="footer__block-text-info-item">Политика конфиденциальности</li>
+                        <li class="footer__block-text-info-item" onclick="location.href='{{route('offer')}}'">Договор оферты</li>
+                        <li class="footer__block-text-info-item" onclick="location.href='{{route('policy')}}'">Политика конфиденциальности</li>
                         <li class="footer__block-text-info-item" onclick="location.href='{{route('contact')}}'">Контакты</li>
                     </ul>
                 </div>

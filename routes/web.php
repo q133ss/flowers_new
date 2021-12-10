@@ -28,6 +28,8 @@ use App\Http\Controllers\OffersController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Profile\LogoutController;
+use App\Http\Controllers\Admin\Catalog\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,8 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/settings', [SettingsController::class, 'index'])->name('profile.settings');
         //EDIT
         Route::post('/settings', [SettingsController::class, 'edit'])->name('profile.edit');
+        //LOGOUT
+        Route::get('/logout', [App\Http\Controllers\Profile\LogoutController::class, 'logout'])->name('logout.perform');
     });
 
     //ADMIN ROUTS
@@ -91,6 +95,11 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::post('/settings/add-who', [SettingController::class, 'add_who'])->name('admin.settings.add.who');
         Route::post('/settings/update/block', [SettingController::class, 'block_update'])->name('admin.settings.block.update');
         Route::post('/settings/delete/block', [SettingController::class, 'block_delete'])->name('admin.settings.block.delete');
+        //CATALOG TAGS
+        Route::get('/catalog/tags', [TagsController::class, 'index'])->name('admin.catalog.tags');
+        Route::post('/catalog/tags/create', [TagsController::class, 'create'])->name('admin.catalog.tags.create');
+        Route::post('/catalog/tags/edit/{id}', [TagsController::class, 'edit'])->name('admin.catalog.tags.edit');
+        Route::post('/catalog/tags/{id}', [TagsController::class, 'delete'])->name('admin.catalog.tags.delete');
     });
 
     //ABOUT US
@@ -102,6 +111,7 @@ Route::middleware(['isUserCity'])->group(function () {
     //Public offer
     Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
     Route::get('/policy', [OffersController::class, 'policy'])->name('policy');
+    Route::get('/payment', [OffersController::class, 'payment'])->name('payment');
 
 });
 

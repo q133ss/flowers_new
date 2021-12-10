@@ -57,8 +57,8 @@
             </div>
         </div>
         <div class="header-profile__client">
-            <div class="header-profile__client-img"></div>
-            <div class="header-profile__client-name">Иван Петров</div>
+            <div class="header-profile__client-img" style="background-image: url('{{Auth::user()->avatar_url}}'); background-size: cover"></div>
+            <div class="header-profile__client-name">{{Auth::user()->name}}</div>
         </div>
     </div>
 
@@ -130,7 +130,7 @@
                     </svg>
 
                     <h3>Бонусные баллы</h3>
-                    <p>+160 баллов </p>
+                    <p>+{{Auth::user()->scores}} баллов </p>
                 </a>
             </li>
             <li class="header-profile__menu-list-notification">
@@ -146,7 +146,7 @@
                     </svg>
 
                     <h3>Уведомления</h3>
-                    <div class="header-profile__menu-list-notification-count">19</div>
+                    <div class="header-profile__menu-list-notification-count">0</div>
                 </a>
             </li>
             <li class="header-profile__menu-list-event">
@@ -259,7 +259,7 @@
                 <a href="/"><p>Вернуться к сайту</p></a>
             </li>
             <li class="header-profile__menu-list-btn">
-                <a href="#"><p>Выйти</p></a>
+                <a href="{{route('logout.perform')}}"><p>Выйти</p></a>
             </li>
         </ul>
         @yield('content')

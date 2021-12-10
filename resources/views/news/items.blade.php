@@ -7,7 +7,7 @@
     <div class="new-content__block-table-{{$key+1}}-data">{{substr($new['created_at'],0,10)}}</div>
     @endif
     <div class="new-content__block-table-{{$key+1}}-text">
-        <div class="new-content__block-table-{{$key+1}}-text-item">{{mb_strimwidth($new['content'], 0, 124, "...")}}</div>
+        <div class="new-content__block-table-{{$key+1}}-text-item" onclick="location.href='{{route('news.single', $new['id'])}}'" style="cursor:pointer;">{{mb_strimwidth($new['content'], 0, 124, "...")}}</div>
         @if($key == 0 || $key == 5)
         <div class="new-content__block-table-{{$key+1}}-text-link"><a href="{{route('news.single', $new['id'])}}">Читать далее</a></div>
         @endif

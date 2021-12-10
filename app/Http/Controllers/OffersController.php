@@ -13,4 +13,8 @@ class OffersController extends Controller
     public function policy(){
         return view('policy');
     }
+
+    public function payment(){
+        return view('payment');
+    }
 }

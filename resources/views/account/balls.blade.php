@@ -5,7 +5,7 @@
         <div class="header-profile__balls-title">Бонусные баллы</div>
         <div class="header-profile__balls-wrapper">
             <div class="header-profile__balls-wrapper-add">У вас</div>
-            <div class="header-profile__balls-wrapper-title">365</div>
+            <div class="header-profile__balls-wrapper-title">{{Auth::user()->scores}}</div>
             <div class="header-profile__balls-wrapper-text">1 балл = 1 рубль</div>
         </div>
         <div class="header-profile__balls-btn">

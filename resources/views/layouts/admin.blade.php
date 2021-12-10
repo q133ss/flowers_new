@@ -99,17 +99,7 @@
                 </div>
             </div>
 
-            <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -125,12 +115,42 @@
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
+                            <i class="nav-icon far fa-newspaper"></i>
                             <p>
-                                Букеты
+                                Каталог
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.catalog.tags')}}" class="nav-link">
+                                    <p>Теги</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                    <p>Цвета</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                    <p>Размеры</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                    <p>Категории</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                    <p>Продукты</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">

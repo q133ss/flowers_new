@@ -129,12 +129,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                <a href="{{route('admin.catalog.color')}}" class="nav-link">
                                     <p>Цвета</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                <a href="{{route('admin.catalog.size')}}" class="nav-link">
                                     <p>Размеры</p>
                                 </a>
                             </li>
@@ -191,6 +191,35 @@
                                 Настройки
                             </p>
                         </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                Локация
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.country')}}" class="nav-link">
+                                    <p>Страны</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.region')}}" class="nav-link">
+                                    <p>Регионы</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.city')}}" class="nav-link">
+                                    <p>Города</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>

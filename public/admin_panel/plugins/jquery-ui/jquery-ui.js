@@ -1458,7 +1458,7 @@ $.effects = {
 	// Element for support tests
 	supportElem = jQuery( "<p>" )[ 0 ],
 
-	// Colors = jQuery.Color.names
+	// colors = jQuery.Color.names
 	colors,
 
 	// Local aliases of functions called often

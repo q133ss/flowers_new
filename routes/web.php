@@ -30,6 +30,11 @@ use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Profile\LogoutController;
 use App\Http\Controllers\Admin\Catalog\TagsController;
+use App\Http\Controllers\Admin\Catalog\ColorController;
+use App\Http\Controllers\Admin\Catalog\SizeController;
+use App\Http\Controllers\Admin\Locations\CountryController;
+use App\Http\Controllers\Admin\Locations\RegionController;
+use App\Http\Controllers\Admin\Locations\AdminCityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +105,32 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::post('/catalog/tags/create', [TagsController::class, 'create'])->name('admin.catalog.tags.create');
         Route::post('/catalog/tags/edit/{id}', [TagsController::class, 'edit'])->name('admin.catalog.tags.edit');
         Route::post('/catalog/tags/{id}', [TagsController::class, 'delete'])->name('admin.catalog.tags.delete');
+        //CATALOG COLORS
+        Route::get('/catalog/colors', [ColorController::class, 'index'])->name('admin.catalog.color');
+        Route::post('/catalog/color/create', [ColorController::class, 'create'])->name('admin.catalog.color.create');
+        Route::post('/catalog/color/edit/{id}', [ColorController::class, 'edit'])->name('admin.catalog.color.edit');
+        Route::post('/catalog/color/{id}', [ColorController::class, 'delete'])->name('admin.catalog.color.delete');
+        //CATALOG SIZES
+        Route::get('/catalog/sizes', [SizeController::class, 'index'])->name('admin.catalog.size');
+        Route::post('/catalog/size/create', [SizeController::class, 'create'])->name('admin.catalog.size.create');
+        Route::post('/catalog/size/edit/{id}', [SizeController::class, 'edit'])->name('admin.catalog.size.edit');
+        Route::post('/catalog/size/{id}', [SizeController::class, 'delete'])->name('admin.catalog.size.delete');
+        //LOCATIONS COUNTRY
+        Route::get('/country', [CountryController::class, 'index'])->name('admin.country');
+        Route::post('/country/create', [CountryController::class, 'create'])->name('admin.country.create');
+        Route::post('/country/edit/{id}', [CountryController::class, 'edit'])->name('admin.country.edit');
+        Route::post('/country/{id}', [CountryController::class, 'delete'])->name('admin.country.delete');
+        //LOCATIONS REGION
+        Route::get('/region', [RegionController::class, 'index'])->name('admin.region');
+        Route::post('/region/create', [RegionController::class, 'create'])->name('admin.region.create');
+        Route::post('/region/edit/{id}', [RegionController::class, 'edit'])->name('admin.region.edit');
+        Route::post('/region/{id}', [RegionController::class, 'delete'])->name('admin.region.delete');
+        //LOCATIONS CITY
+        Route::get('/city', [AdminCityController::class, 'index'])->name('admin.city');
+        Route::post('/city/create', [AdminCityController::class, 'create'])->name('admin.city.create');
+        Route::post('/city/edit/{id}', [AdminCityController::class, 'edit'])->name('admin.city.edit');
+        Route::post('/city/{id}', [AdminCityController::class, 'delete'])->name('admin.city.delete');
+        Route::get('/city/search', [AdminCityController::class, 'search'])->name('admin.city.search');
     });
 
     //ABOUT US

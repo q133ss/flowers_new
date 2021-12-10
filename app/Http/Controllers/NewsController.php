@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\NewsComment;
+use App\Models\User;
 
 class NewsController extends Controller
 {
@@ -19,5 +21,18 @@ class NewsController extends Controller
             'news' => $news,
             'news_more' => $news_more
         ]);
+    }
+
+    public function add_comment(Request $request, $news_id){
+        if(\Auth::check()) {
+            $comment = new NewsComment();
+            $comment->news_id = $news_id;
+            $comment->author_id = \Auth::user()->id;
+            $comment->comment = $request->comment;
+            $comment->save();
+            return redirect()->back();
+        }else{
+            return redirect()->back()->with('message','Войдите в систему');
+        }
     }
 }

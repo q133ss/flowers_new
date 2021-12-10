@@ -70,6 +70,8 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');
     //QUIZ
     Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
+    //NEWS ADD COMMENT
+    Route::post('/news/add/comment/{news_id}', [NewsController::class, 'add_comment'])->name('news.add.comment');
 
     //ACCOUNT
     Route::group(['prefix' => 'account', 'middleware' => ['profileCheck']], function(){

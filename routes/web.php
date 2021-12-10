@@ -27,6 +27,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminNewsController;
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,11 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::group(['prefix' => 'admin','middleware' => ['role:admin']], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
         Route::resource('admin_news', AdminNewsController::class);
+        Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings.index');
+        Route::post('/settings', [SettingController::class, 'min_order'])->name('admin.settings.min.order');
+        Route::post('/settings/add-who', [SettingController::class, 'add_who'])->name('admin.settings.add.who');
+        Route::post('/settings/update/block', [SettingController::class, 'block_update'])->name('admin.settings.block.update');
+        Route::post('/settings/delete/block', [SettingController::class, 'block_delete'])->name('admin.settings.block.delete');
     });
 
     //ABOUT US

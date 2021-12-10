@@ -29,39 +29,12 @@
                         </div>
                     </div>
                     <ul class="quiz-content__block-whom-wrapper">
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_1" id="quizWhomItems_1">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_1">
+                        @foreach($block1 as $key => $item)
+                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_{{$key+1}}" id="quizWhomItems_{{$key+1}}" style="background-image:url('{{$item['img']}}'); background-size:cover" onclick="block1('{{$item['title']}}', '{{$item['img']}}')">
+                            <p>{{$item['title']}}</p>
+                            <input type="radio" name="quizWhomItem" id="quizWhomItem_{{$key+1}}">
                         </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_2" id="quizWhomItems_2">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_2">
-                        </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_3" id="quizWhomItems_3">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_3">
-                        </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_4" id="quizWhomItems_4">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_4">
-                        </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_5" id="quizWhomItems_5">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_5">
-                        </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_6" id="quizWhomItems_6">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_6">
-                        </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_7" id="quizWhomItems_7">
-                            <p>Маме</p>
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_7">
-                        </label>
-                        <label class="quiz-content__block-whom-wrapper-item" for="quizWhomItem_8" id="quizWhomItems_8">
-                            <p>Указать свой вариант</p>
-                            <input type="text">
-                            <input type="radio" name="quizWhomItem" id="quizWhomItem_8">
-                        </label>
+                        @endforeach
                     </ul>
                     <div class="quiz-content__block-whom-points">
                         <ul class="quiz-content__block-whom-point">
@@ -116,22 +89,12 @@
                     </div>
                     <div class="quiz-content__block-type-title">Тип сборки</div>
                     <ul class="quiz-content__block-type-wrapper">
-                        <label class="quiz-content__block-type-wrapper-item" for="quizTypeItem_1" id="quizTypeItems_1">
-                            <input type="radio" id="quizTypeItem_1" name="quizTypeItem">
-                            <p>Каскад</p>
+                        @foreach($block2 as $key => $item)
+                        <label class="quiz-content__block-type-wrapper-item" style="background-image: url('{{$item['img']}}'); background-size: cover" for="quizTypeItem_{{$key+1}}" id="quizTypeItems_{{$key+1}}" onclick="block2('{{$item['title']}}', '{{$item['img']}}')">
+                            <input type="radio" id="quizTypeItem_{{$key+1}}" name="quizTypeItem">
+                            <p>{{$item['title']}}</p>
                         </label>
-                        <label class="quiz-content__block-type-wrapper-item" for="quizTypeItem_2" id="quizTypeItems_2">
-                            <input type="radio" id="quizTypeItem_2" name="quizTypeItem">
-                            <p>Веер</p>
-                        </label>
-                        <label class="quiz-content__block-type-wrapper-item" for="quizTypeItem_3" id="quizTypeItems_3">
-                            <input type="radio" id="quizTypeItem_3" name="quizTypeItem">
-                            <p>Круглый</p>
-                        </label>
-                        <label class="quiz-content__block-type-wrapper-item" for="quizTypeItem_4" id="quizTypeItems_4">
-                            <input type="radio" id="quizTypeItem_4" name="quizTypeItem">
-                            <p>Ассиметричный</p>
-                        </label>
+                        @endforeach
                     </ul>
                     <div class="quiz-content__block-type-points">
                         <ul class="quiz-content__block-type-point">
@@ -186,14 +149,14 @@
                     </div>
                     <div class="quiz-content__block-shade-title">Выберите оттенки цветов в букете</div>
                     <ul class="quiz-content__block-shade-wrapper">
-                        <label class="quiz-content__block-shade-wrapper-item" for="quizShadeItem_1" id="quizShadeItems_1">
+                        <label class="quiz-content__block-shade-wrapper-item" for="quizShadeItem_1" id="quizShadeItems_1" style="background-image: url('{{$block3_1['img']}}');background-size: cover" onclick="block3('Насыщенные тона', '{{$block3_1['img']}}')">
                             <h3>Насыщенные тона</h3>
                             <p>В связи с загруженным автомобильным трафиком
                                 в предпраздничные и праздничные дни,
                                 чсчсчсчс</p>
                             <input type="radio" name="quizShadeItem" id="quizShadeItem_1">
                         </label>
-                        <label class="quiz-content__block-shade-wrapper-item" for="quizShadeItem_2" id="quizShadeItems_2">
+                        <label class="quiz-content__block-shade-wrapper-item" for="quizShadeItem_2" id="quizShadeItems_2" style="background-image: url('{{$block3_2['img']}}');background-size: cover" onclick="block3('Нежная пастель', '{{$block3_2['img']}}')">
                             <h3>Нежная пастель</h3>
                             <p>В связи с загруженным автомобильным трафиком
                                 в предпраздничные и праздничные дни,
@@ -254,11 +217,11 @@
                     </div>
                     <div class="quiz-content__block-color-title">Букет в упаковке или под ленту в стиле прованс?</div>
                     <ul class="quiz-content__block-color-wrapper">
-                        <label class="quiz-content__block-color-wrapper-item" for="quizColorItem_1" id="quizColorItems_1">
+                        <label class="quiz-content__block-color-wrapper-item" for="quizColorItem_1" id="quizColorItems_1" style="background-image: url('{{$block41['img']}}');background-size: cover" onclick="block4('В упаковке', '{{$block41['img']}}')">
                             <p>В упаковке</p>
                             <input type="radio" name="quizColorItem" id="quizColorItem_1">
                         </label>
-                        <label class="quiz-content__block-color-wrapper-item" for="quizColorItem_2" id="quizColorItems_2">
+                        <label class="quiz-content__block-color-wrapper-item" for="quizColorItem_2" id="quizColorItems_2" style="background-image: url('{{$block42['img']}}');background-size: cover" onclick="block3('Под ленту', '{{$block42['img']}}')">
                             <p>Под ленту</p>
                             <input type="radio" name="quizColorItem" id="quizColorItem_2" checked>
                         </label>
@@ -6071,6 +6034,35 @@
 @endsection
 @section('js')
     <script>
+
+        function block1(title, img){
+            $('.ord-quiz__catalog-item-1').css('background-image', 'url("'+img+'")');
+            $('.ord-quiz__catalog-item-1').css('background-size', 'cover');
+            $('.ord-quiz__catalog-item-1>p').html(title);
+        }
+        function block2(title,img){
+            $('.ord-quiz__catalog-item-2').css('background-image', 'url("'+img+'")');
+            $('.ord-quiz__catalog-item-2').css('background-size', 'cover');
+            $('.ord-quiz__catalog-item-2>p').html(title);
+        }
+        function block3(title,img){
+            $('.ord-quiz__catalog-item-3').css('background-image', 'url("'+img+'")');
+            $('.ord-quiz__catalog-item-3').css('background-size', 'cover');
+            $('.ord-quiz__catalog-item-3>p').html(title);
+        }
+        function block4(title, img){
+            $('.ord-quiz__catalog-item-4').css('background-image', 'url("'+img+'")');
+            $('.ord-quiz__catalog-item-4').css('background-size', 'cover');
+            $('.ord-quiz__catalog-item-4>p').html(title);
+        }
+
+        $('#quiz-range').change(function(){
+            let sum = $('#quiz-range').val();
+            $('.ord-quiz__catalog-item-5>h2').html(sum);
+            $('.ord-quiz__block-info-price-total-item').html(sum);
+
+        });
+
         let item1 = 0;
         let item2 = 0;
         //Items1
@@ -6107,5 +6099,6 @@
             item1 = 0;
             $('#quizColorsItem_1>.quiz-content__block-color-wrapper-list-item').removeClass('opacity-5')
         })
+
     </script>
 @endsection

@@ -27,10 +27,9 @@ class CatalogController extends Controller
     public function category(Request $request, $id)
     {
         $category = Category::byId($id);
-        //$categoryNotFound = Category::byId(1000);
-        //$products = Product::byCategory($id, $request->query());
+        $products = Product::byCategory($id, $request->query());
 
-        dd($category, $categoryNotFound, $products);
+        dd($category, $products);
         // Возвращает либо страницу целиком, либо html для модального окна
     }
 

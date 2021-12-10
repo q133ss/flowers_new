@@ -106,8 +106,42 @@ class Product extends Model implements Sortable
     }
 
     
-    public function scopeByCategory($model, $id) {
-        return $this->getDefProds()->where('category_id', $id);
+    public function scopeByCategory($model, $id, $request) {
+        $r = $this->getDefProds();
+        
+        if ($request->has('order') && $request->get('order') == 'all') {
+            $cat = self::find($id);
+            $r->where('type', $cat->type);
+        } else {
+            $r->where('category_id', $id);
+        }
+
+        if(isset($request->order_by)){
+            if($request->order_by == 'low-to-height'){
+                $r->orderBy('price', 'ASC');
+            }
+
+            if($request->order_by == 'height-to-low'){
+                $r->orderBy('price', 'DESC');
+            }
+
+            if($request->order_by == 'rating'){
+                $r->orderBy('rating', 'DESC');
+            }
+
+            if($request->order_by == 'last-add'){
+                $r->orderBy('created_at', 'ASC');
+            }
+        }
+
+        if(isset($request->min) && isset($request->max)){
+            $r->whereBetween('price', [$request->min, $request->max]);
+        } else if (isset($request->min)) {
+            $r->where('price', '>=', $request->min);
+        } else if (isset($request->max)) {
+            $r->where('price', '<=', $request->max);
+        }
+        return $r;
     }
 
     
@@ -204,7 +238,8 @@ class Product extends Model implements Sortable
      **/
     public function productSizes()
     {
-        return $this->hasMany(\App\Models\ProductSize::class, 'product_id');
+        return \App\Models\ProductSize::byProduct($this->product_id);
+        //return $this->hasMany(\App\Models\ProductSize::class, 'product_id');
     }
 
     /**

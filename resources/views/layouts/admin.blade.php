@@ -145,7 +145,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                <a href="{{route('admin.products')}}" class="nav-link">
                                     <p>Продукты</p>
                                 </a>
                             </li>
@@ -225,26 +225,12 @@
 
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('admin.subscribe')}}" class="nav-link">
                             <i class="nav-icon far fa-newspaper"></i>
                             <p>
                                 Подписки
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.subscribe')}}" class="nav-link">
-                                    <p>Все подписки</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.region')}}" class="nav-link">
-                                    <p>Добавить подписку</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
 
                 </ul>

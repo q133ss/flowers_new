@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\Locations\RegionController;
 use App\Http\Controllers\Admin\Locations\AdminCityController;
 use App\Http\Controllers\Admin\Catalog\CategoryController;
 use App\Http\Controllers\Admin\SubscribeController;
+use App\Http\Controllers\Admin\Catalog\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,6 +149,9 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/subscribe', [SubscribeController::class, 'index'])->name('admin.subscribe');
         Route::post('/subscribe/create', [SubscribeController::class, 'create'])->name('admin.subscribe.create');
         Route::post('/subscribe/{id}/update', [SubscribeController::class, 'update'])->name('admin.subscribe.update');
+        //PRODUCTS
+        Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
+        Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
     });
 
     //ABOUT US

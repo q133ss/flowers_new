@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\Catalog\SizeController;
 use App\Http\Controllers\Admin\Locations\CountryController;
 use App\Http\Controllers\Admin\Locations\RegionController;
 use App\Http\Controllers\Admin\Locations\AdminCityController;
+use App\Http\Controllers\Admin\Catalog\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +134,15 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::post('/city/edit/{id}', [AdminCityController::class, 'edit'])->name('admin.city.edit');
         Route::post('/city/{id}', [AdminCityController::class, 'delete'])->name('admin.city.delete');
         Route::get('/city/search', [AdminCityController::class, 'search'])->name('admin.city.search');
+        //CATEGORY
+        Route::get('/category', [CategoryController::class, 'index'])->name('admin.category');
+        Route::post('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+        Route::post('/category/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+        //SUB CATEGORY
+        Route::get('/category/{id}', [CategoryController::class, 'sub_index'])->name('admin.sub.category');
+        Route::post('/category/{id}/create', [CategoryController::class, 'sub_create'])->name('admin.sub.create');
+        Route::post('/sub-category/edit/{id}', [CategoryController::class, 'sub_edit'])->name('admin.subcategory.edit');
     });
 
     //ABOUT US

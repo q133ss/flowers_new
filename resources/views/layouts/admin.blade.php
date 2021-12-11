@@ -139,7 +139,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                <a href="{{route('admin.category')}}" class="nav-link">
                                     <p>Категории</p>
                                 </a>
                             </li>

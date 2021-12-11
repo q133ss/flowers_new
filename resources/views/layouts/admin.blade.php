@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/admin_panel/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/admin_panel/plugins/summernote/summernote-bs4.min.css">
+    @yield('meta')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -222,6 +223,30 @@
                         </ul>
                     </li>
 
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                Подписки
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.subscribe')}}" class="nav-link">
+                                    <p>Все подписки</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.region')}}" class="nav-link">
+                                    <p>Добавить подписку</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -285,5 +310,6 @@
 <script src="/admin_panel/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin_panel/dist/js/pages/dashboard.js"></script>
+@yield('scripts')
 </body>
 </html>

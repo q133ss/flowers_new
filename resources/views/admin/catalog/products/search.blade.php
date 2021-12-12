@@ -8,18 +8,17 @@
         </div>
     @endif
     <div class="my-header d-flex justify-content-between">
-    <form action="{{route('admin.product.search')}}" method="GET" class="row w-100">
+    <form action="{{route('admin.product.store')}}" method="GET" class="row w-100">
         @csrf
-    <input type="text" name="search" class="form-control col-2" placeholder="Поиск"> <button class="btn btn-success col-1 ml-2 mb-3" type="submit">Поиск</button>
+        <input type="text" value="@if(isset($_GET['search'])){{$_GET['search']}}@endif" name="search" class="form-control col-2" placeholder="Поиск"> <button class="btn btn-success col-1 ml-2 mb-3" type="submit">Поиск</button>
     </form>
 
     <select class="form-control" style="width: 125px" onchange="location.href='/admin/product/filter/'+$(this).val()">
         <option selected disabled>Категория</option>
         @foreach($categories as $category)
-            <option value="{{$category['id']}}">{{$category['name']}}</option>
+            <option value="{{$category['id']}}" @if(isset($id) && $id == $category['id']) selected @endif>{{$category['name']}}</option>
         @endforeach
     </select>
-
     </div>
 
     <table class="table table-sm">
@@ -64,13 +63,4 @@
         @endforeach
         </tbody>
     </table>
-    <style>
-        .pagination{
-            margin-bottom: 0;
-        }
-    </style>
-    <div class="d-flex justify-content-between">
-    {{$products->links()}}
-        <a href="{{route('admin.product.create')}}" type="button" class="btn btn-success">Добавить</a>
-    </div>
 @endsection

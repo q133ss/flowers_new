@@ -153,6 +153,10 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
         Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
         Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::get('/product/search/', [ProductController::class, 'search'])->name('admin.product.search');
+        Route::get('/product/filter/{id}', [ProductController::class, 'filter'])->name('admin.product.filter');
+        Route::get('/product/create/', [ProductController::class, 'create'])->name('admin.product.create');
+        Route::post('/product/store/', [ProductController::class, 'store'])->name('admin.product.store');
     });
 
     //ABOUT US

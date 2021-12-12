@@ -36,6 +36,9 @@ use App\Http\Controllers\Admin\Locations\CountryController;
 use App\Http\Controllers\Admin\Locations\RegionController;
 use App\Http\Controllers\Admin\Locations\AdminCityController;
 use App\Http\Controllers\Admin\Catalog\CategoryController;
+use App\Http\Controllers\Admin\SubscribeController;
+use App\Http\Controllers\Admin\Catalog\ProductController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,6 +146,24 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/category/{id}', [CategoryController::class, 'sub_index'])->name('admin.sub.category');
         Route::post('/category/{id}/create', [CategoryController::class, 'sub_create'])->name('admin.sub.create');
         Route::post('/sub-category/edit/{id}', [CategoryController::class, 'sub_edit'])->name('admin.subcategory.edit');
+        //SUBSCRIBE
+        Route::get('/subscribe', [SubscribeController::class, 'index'])->name('admin.subscribe');
+        Route::post('/subscribe/create', [SubscribeController::class, 'create'])->name('admin.subscribe.create');
+        Route::post('/subscribe/{id}/update', [SubscribeController::class, 'update'])->name('admin.subscribe.update');
+        //PRODUCTS
+        Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
+        Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::get('/product/search/', [ProductController::class, 'search'])->name('admin.product.search');
+        Route::get('/product/filter/{id}', [ProductController::class, 'filter'])->name('admin.product.filter');
+        Route::get('/product/create/', [ProductController::class, 'create'])->name('admin.product.create');
+        Route::post('/product/store/', [ProductController::class, 'store'])->name('admin.product.store');
+        //USERS
+        Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+        Route::get('/users/create', [UsersController::class, 'create'])->name('admin.users.create');
+        Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('admin.users.edit');
+        Route::post('/users/update/{id}', [UsersController::class, 'update'])->name('admin.users.update');
+        Route::post('/users/delete/{id}', [UsersController::class, 'delete'])->name('admin.users.delete');
     });
 
     //ABOUT US

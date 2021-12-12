@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/admin_panel/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/admin_panel/plugins/summernote/summernote-bs4.min.css">
+    @yield('meta')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -144,7 +145,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin_news.index')}}" class="nav-link">
+                                <a href="{{route('admin.products')}}" class="nav-link">
                                     <p>Продукты</p>
                                 </a>
                             </li>
@@ -222,6 +223,26 @@
                         </ul>
                     </li>
 
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.subscribe')}}" class="nav-link">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                Подписки
+                            </p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.users')}}" class="nav-link">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                Пользователи
+                            </p>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -285,5 +306,6 @@
 <script src="/admin_panel/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin_panel/dist/js/pages/dashboard.js"></script>
+@yield('scripts')
 </body>
 </html>

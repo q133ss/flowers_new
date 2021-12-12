@@ -152,6 +152,7 @@ Route::middleware(['isUserCity'])->group(function () {
         //PRODUCTS
         Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
         Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
     });
 
     //ABOUT US

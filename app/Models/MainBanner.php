@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @version December 5, 2021, 6:41 pm UTC
  *
  * @property string $img
+ * @property string $link
  */
 class MainBanner extends Model
 {
@@ -26,7 +27,8 @@ class MainBanner extends Model
 
 
     public $fillable = [
-        'img'
+        'img',
+        'link'
     ];
 
     /**
@@ -36,7 +38,8 @@ class MainBanner extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'img' => 'string'
+        'img' => 'string',
+        'link' => 'string'
     ];
 
     /**
@@ -45,6 +48,7 @@ class MainBanner extends Model
      * @var array
      */
     public static $rules = [
+        'img' => 'required|string|max:255',
         'img' => 'required|string|max:255'
     ];
 

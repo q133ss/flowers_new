@@ -61,10 +61,10 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::get('/additionally/product/{id}', [AditionalyController::class, 'product']);
     Route::get('/additionally/{id}', [AdditionallyController::class, 'category']);
 
-    Route::get('/constructor', [ConstructorController::class, 'index']);
+    Route::get('/constructor', [ConstructorController::class, 'index'])->name('constructor');
     Route::get('/constructor/{id}', [ConstructorController::class, 'category']);
 
-    Route::get('/urgently', [UrgentlyController::class, 'index']);
+    Route::get('/urgently', [UrgentlyController::class, 'index'])->name('urgently');
 
     //NEWS
     Route::get('/news', [NewsController::class, 'index'])->name('news.index');

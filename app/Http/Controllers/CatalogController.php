@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\MainBanner;
 
 //
 // class="js-modal-open" data-url="asd"
@@ -15,13 +16,11 @@ class CatalogController extends Controller
     //
     public function index()
     {
-        $banners = [];
+        $banners = MainBanner::all();
         $cats = Category::byType(Category::TYPE_PRODUCTS);
         $addits = Category::byType(Category::TYPE_ADDITIONALLY);
-        dd($banners,
-        $cats->get(),
-        $addits->get()
-    );
+        
+        return view('catalog.index', compact('banners', 'cats', 'addits'));
     }
 
     public function category(Request $request, $id)

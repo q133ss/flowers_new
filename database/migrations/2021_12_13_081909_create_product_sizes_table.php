@@ -15,15 +15,14 @@ class CreateProductSizesTable extends Migration
     {
         Schema::create('product_sizes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->unsignedBigInteger('size_id');
-            $table->foreign('size_id')->references('id')->on('sizes');
+            $table->unsignedBigInteger('product_id')->index('product_sizes_product_id_foreign');
+            $table->unsignedBigInteger('size_id')->index('product_sizes_size_id_foreign');
             $table->boolean('is_main');
             $table->bigInteger('price');
             $table->unsignedTinyInteger('sale')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
+            $table->integer('score')->nullable();
         });
     }
 

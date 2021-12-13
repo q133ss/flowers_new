@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeCategoriesTable extends Migration
+class FixMainBannerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class ChangeCategoriesTable extends Migration
     public function up()
     {
         //
-        Schema::table('categories', function (Blueprint $table) {
-            $table->nestedSet();
+        Schema::table('main_banners', function (Blueprint $table) {
+            $table->string('type');
         });
     }
 

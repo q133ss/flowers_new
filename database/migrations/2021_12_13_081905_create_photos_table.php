@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeColorTable extends Migration
+class CreatePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class ChangeColorTable extends Migration
      */
     public function up()
     {
-        Schema::table('colors', function (Blueprint $table) {
-            $table->string('icon')->nullable();
+        Schema::create('photos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_id')->index('photos_product_id_foreign');
+            $table->string('filename');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +28,6 @@ class ChangeColorTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('photos');
     }
 }

@@ -17,13 +17,15 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('img')->nullable();
-            $table->string('type')->key();
-            $table->integer('order');
+            $table->string('type');
             $table->string('status');
-            $table->text('descr')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('categories');
+            $table->text('descr');
             $table->timestamps();
+            $table->unsignedInteger('_lft')->default(0);
+            $table->unsignedInteger('_rgt')->default(0);
+            $table->unsignedInteger('parent_id')->nullable();
+            
+            $table->index(['_lft', '_rgt', 'parent_id'], 'categories__lft__rgt_parent_id_index');
         });
     }
 

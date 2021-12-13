@@ -58,11 +58,10 @@ Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city
 Route::middleware(['isUserCity'])->group(function () {
     Route::get('/', [CatalogController::class, 'index'])->name('home');
     Route::get('/product/{id}', [CatalogController::class, 'product']);
-    Route::get('/{id}', [CatalogController::class, 'category'])->where('id', '[0-9]+');
+    Route::get('/{id}', [CatalogController::class, 'category'])->where('id', '[0-9]+')->name('product.cat');
 
-    Route::get('/additionally', [AdditionallyController::class, 'index']);
     Route::get('/additionally/product/{id}', [AditionalyController::class, 'product']);
-    Route::get('/additionally/{id}', [AdditionallyController::class, 'category']);
+    Route::get('/additionally/{id}', [AdditionallyController::class, 'category'])->name('addit.cat');
 
     Route::get('/constructor', [ConstructorController::class, 'index'])->name('constructor');
     Route::get('/constructor/{id}', [ConstructorController::class, 'category']);

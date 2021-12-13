@@ -47,9 +47,6 @@ class Category extends Model
         self::TYPE_URGENTLY => 'Срочный заказ',
     ];
 
-
-
-
     public $fillable = [
         'name',
         'img',
@@ -165,7 +162,7 @@ class Category extends Model
         )->where('id', $this->parent_id);
     }
 
-    public function child()
+    public function scopeChild()
     {
         $city = City::find(\Cookie::get('city_id'));
         return self::from('categories AS c')

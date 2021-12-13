@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMainBannersTable extends Migration
+class CreateReviewsPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateMainBannersTable extends Migration
      */
     public function up()
     {
-        Schema::create('main_banners', function (Blueprint $table) {
+        Schema::create('reviews_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('img');
+            $table->unsignedBigInteger('review_id')->index('reviews_photos_review_id_foreign');
+            $table->string('photo');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateMainBannersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('main_banners');
+        Schema::dropIfExists('reviews_photos');
     }
 }

@@ -38,9 +38,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('delivery_price')->nullable();
             $table->bigInteger('status')->default(0);
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id', 'orders_user_id_foreign')->references('id')->on('users');
-
+            $table->unsignedBigInteger('user_id')->index('orders_user_id_foreign');
         });
     }
 

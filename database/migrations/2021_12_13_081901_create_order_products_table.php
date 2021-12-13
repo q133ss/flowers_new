@@ -15,10 +15,10 @@ class CreateOrderProductsTable extends Migration
     {
         Schema::create('order_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('size_id');
-            $table->unsignedBigInteger('color_id');
+            $table->unsignedBigInteger('order_id')->index('order_products_order_id_foreign');
+            $table->unsignedBigInteger('product_id')->index('order_products_product_id_foreign');
+            $table->unsignedBigInteger('size_id')->index('order_products_size_id_foreign');
+            $table->unsignedBigInteger('color_id')->index('order_products_color_id_foreign');
             $table->unsignedInteger('price')->nullable();
             $table->unsignedTinyInteger('score')->nullable();
             $table->unsignedTinyInteger('sale')->nullable();
@@ -26,11 +26,6 @@ class CreateOrderProductsTable extends Migration
             $table->unsignedBigInteger('qty');
             $table->string('delivery_date');
             $table->timestamps();
-            
-            $table->foreign('color_id', 'order_products_color_id_foreign')->references('id')->on('colors');
-            $table->foreign('order_id', 'order_products_order_id_foreign')->references('id')->on('orders');
-            $table->foreign('product_id', 'order_products_product_id_foreign')->references('id')->on('products');
-            $table->foreign('size_id', 'order_products_size_id_foreign')->references('id')->on('sizes');
         });
     }
 

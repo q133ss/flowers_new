@@ -22,7 +22,7 @@ class CreatePersonalAccessTokensTable extends Migration
             $table->text('abilities');
             $table->timestamp('last_used_at')->nullable();
             $table->timestamps();
-
+            
             $table->index(['tokenable_type', 'tokenable_id'], 'personal_access_tokens_tokenable_type_tokenable_id_index');
         });
     }

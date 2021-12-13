@@ -8,6 +8,7 @@
                 <h4><i class="icon fa fa-check"></i>{{session('success')}}</h4>
             </div>
         @endif
+            <a class="btn btn-success ml-4" href="{{route('admin.category')}}">Назад</a>
         <table class="table table-sm">
             <thead>
             <tr>
@@ -24,7 +25,7 @@
                     <td><img src="{{$cat['img']}}" width="100%" height="100px" alt=""></td>
                     <td>{{$cat['name']}}</td>
                     <td>
-                        {{$cat['type']}}
+                        {{\App\Models\Category::TYPES[$cat['type']]}}
                     </td>
                     <td>
                         <button data-toggle="modal" data-target="#edit-modal{{$cat['id']}}" class="btn btn-block btn-warning">Изменить</button>
@@ -67,10 +68,10 @@
                             <input type="file" value="{{$cat['img']}}" name="img"> <br>
                             <input type="text" value="{{$cat['name']}}" name="name" placeholder="Название" class="form-control mt-2">
                             <input type="hidden" name="type" value="{{$cat_['type']}}">
-                            <label for="">Выключить категорию?</label>
+                            <label for="">Статус</label>
                             <select name="status" id="">
-                                <option value="Нет" @if($cat['status'] == 0) selected @endif>Нет</option>
-                                <option value="Да">Да</option>
+                                <option value="Нет" @if($cat['status'] == 0) selected @endif>Активна</option>
+                                <option value="Да">Отключена</option>
                             </select>
                         </div>
                         <div class="modal-footer">

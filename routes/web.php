@@ -39,6 +39,8 @@ use App\Http\Controllers\Admin\Catalog\CategoryController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\Catalog\ProductController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\Path\PathProductController;
+use App\Http\Controllers\Admin\Path\PathCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -176,6 +178,17 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::get('/policy', [OffersController::class, 'policy'])->name('policy');
     Route::get('/payment', [OffersController::class, 'payment'])->name('payment');
 
+    //PATH PRODUCT
+    Route::get('/path/product', [PathProductController::class, 'index'])->name('admin.path.product');
+    Route::post('/path/product/edit/{id}', [PathProductController::class, 'edit'])->name('admin.path.product.edit');
+    Route::post('/path/product/delete/{id}', [PathProductController::class, 'delete'])->name('admin.path.product.delete');
+    Route::post('/path/product/create/', [PathProductController::class, 'create'])->name('admin.path.product.create');
+
+    //PATH CATEGORY
+    Route::get('/path/category', [PathCategoryController::class, 'index'])->name('admin.path.category');
+    Route::post('/path/category/edit/{id}', [PathCategoryController::class, 'edit'])->name('admin.path.category.edit');
+    Route::post('/path/category/delete/{id}', [PathCategoryController::class, 'delete'])->name('admin.path.category.delete');
+    Route::post('/path/category/create/', [PathCategoryController::class, 'create'])->name('admin.path.category.create');
 });
 
 Route::get('/order', [OrderController::class, 'index']);

@@ -14,6 +14,7 @@ use App\Models\Country;
 use App\Models\ProductPath;
 use App\Models\ProductSizePath;
 use App\Models\Photo;
+use App\Models\ProductSize;
 
 class ProductController extends Controller
 {
@@ -36,6 +37,8 @@ class ProductController extends Controller
         $region = Region::get();
         $country = Country::get();
 
+        $product_sizes = ProductSize::where('product_id', $id)->get();
+
         return view('admin.catalog.products.edit', [
             'product' => $product,
             'categories' => $categories,
@@ -43,7 +46,8 @@ class ProductController extends Controller
             'sizes' => $sizes,
             'cities' => $city,
             'regions' => $region,
-            'countries' => $country
+            'countries' => $country,
+            'product_sizes' => $product_sizes
         ]);
     }
 
@@ -61,6 +65,23 @@ class ProductController extends Controller
             $product->img = '/storage/' . $img_path;
         }
         $product->save();
+
+        //Sizes
+        foreach ($request->sizes as $size){
+            $size_price = new ProductSize();
+            $size_price->product_id = $product->id;
+            $size_price->size_id = $size;
+            if($request['size_is_main'] == $size) {
+                $size_price->is_main = 1;
+            }else{
+                $size_price->is_main = 0;
+            }
+            $size_price->price = $request['size_price'.$size];
+            $size_price->sale = $request['size_price_sale'.$size];
+            $size_price->status = $request['size_price_status'.$size];
+            $size_price->score = $request['size_price_score'.$size];
+            $size_price->save();
+        }
 
         //Gallery
         if(isset($request->gallery)){
@@ -236,6 +257,23 @@ class ProductController extends Controller
             $product->img = '/storage/' . $img_path;
         }
         $product->save();
+
+        //Sizes
+        foreach ($request->sizes as $size){
+            $size_price = new ProductSize();
+            $size_price->product_id = $product->id;
+            $size_price->size_id = $size;
+            if($request['size_is_main'] == $size) {
+                $size_price->is_main = 1;
+            }else{
+                $size_price->is_main = 0;
+            }
+            $size_price->price = $request['size_price'.$size];
+            $size_price->sale = $request['size_price_sale'.$size];
+            $size_price->status = $request['size_price_status'.$size];
+            $size_price->score = $request['size_price_score'.$size];
+            $size_price->save();
+        }
 
         //Gallery
         if(isset($request->gallery)){

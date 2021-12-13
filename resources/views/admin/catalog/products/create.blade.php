@@ -106,6 +106,7 @@
                         <tr>
                             <th>{{$size['name']}}</th>
                             <th><button type="button" class="ml-3 btn btn-block btn-primary btn-sm size-add" data-id="{{$size['id']}}">+</button></th>
+                            <th id="size_input{{$size['id']}}"></th>
                         </tr>
                     @endforeach
                 </table>
@@ -152,9 +153,9 @@
                 <input type="text" class="form-control col-2" style="display: none" id="hide" placeholder="123">
 
             <select name="path-status1" id="" class="form-control col-2">
-                <option value="" selected disabled>Скрыть товар?</option>
-                <option value="Да">Да</option>
-                <option value="Нет">Нет</option>
+                <option value="" selected disabled>Статус</option>
+                <option value="Да">Активен</option>
+                <option value="Нет">Выключен</option>
             </select>
 
             <input type="text" class="col-1 ml-2" name="path-price1" value="" placeholder="Цена">
@@ -279,11 +280,22 @@
             let id = $(this).data('id')
             if($(this).html() == '-'){
                 $('#size'+id).remove()
+                $('#size_price'+id).remove()
+                $('#size_price_sale'+id).remove()
+                $('#size_price_score'+id).remove()
+                $('#size_price_status'+id).remove()
+                $('#size_is_main'+id).remove()
+                $('#main_span'+id).remove()
                 $(this).html('+')
                 $(this).addClass('btn-primary')
                 $(this).removeClass('btn-success')
             }else {
                 $('#form-edit').append('<input type="hidden" id="size'+id+'" value="' + id + '" name="sizes[]">')
+                $('#size_input'+id).append('<input type="text" id="size_price'+id+'" placeholder="Цена" class="ml-4" name="size_price'+id+'">')
+                $('#size_input'+id).append('<input type="text" id="size_price_sale'+id+'" placeholder="Скидка" class="ml-2" name="size_price_sale'+id+'">')
+                $('#size_input'+id).append('<input type="text" id="size_price_score'+id+'" value="" placeholder="Балы" class="ml-2" name="size_price_score'+id+'">')
+                $('#size_input'+id).append('<select name="size_price_status'+id+'" id="size_price_status'+id+'" class="p-1 ml-2"><option value="" disabled selected>Статус</option><option value="1">Активен</option><option value="0">Выключен</option></select>')
+                $('#size_input'+id).append('<span class="ml-2" id="main_span'+id+'">Главный</span> <input type="radio" id="size_is_main'+id+'" value="'+id+'" class="ml-2" name="size_is_main">')
                 $(this).removeClass('btn-primary')
                 $(this).addClass('btn-success')
                 $(this).html('-')

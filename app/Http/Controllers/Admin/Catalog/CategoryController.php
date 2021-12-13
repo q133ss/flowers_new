@@ -21,7 +21,7 @@ class CategoryController extends Controller
             $category->img = '/storage/' . $img_path;
         }
         $category->type = $request->type;
-        $category->status = 1;
+        $category->status = $request->status;
         $category->parent_id = NULL;
         $category->save();
         return redirect()->back()->withSuccess('Категория создана');
@@ -47,8 +47,15 @@ class CategoryController extends Controller
 
     public function delete(Request $request){
         $category = Category::find($request->id);
-        $category->delete();
-        return redirect()->back()->withSuccess('Категория удалена');
+
+        if($category->products->count() == 0){
+            $category->delete();
+            return redirect()->back()->withSuccess('Категория удалена');
+        }else{
+            return redirect()->back()->withSuccess('Эту категорию удалить нельзя');
+        }
+
+
     }
 
     public function sub_index($id){
@@ -92,4 +99,5 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->back()->withSuccess('Категория изменена');
     }
+
 }

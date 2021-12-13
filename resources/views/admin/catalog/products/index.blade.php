@@ -9,17 +9,17 @@
     @endif
     <div class="my-header d-flex justify-content-between">
     <form action="{{route('admin.product.search')}}" method="GET" class="row w-100">
-        @csrf
-    <input type="text" name="search" class="form-control col-2" placeholder="Поиск"> <button class="btn btn-success col-1 ml-2 mb-3" type="submit">Поиск</button>
+    <input type="text" name="search" class="form-control col-2" placeholder="Поиск">
+    <button class="btn btn-success col-1 ml-2 mb-3" type="submit">Поиск</button>
     </form>
 
     <select class="form-control" style="width: 125px" onchange="location.href='/admin/product/filter/'+$(this).val()">
         <option selected disabled>Категория</option>
         @foreach($categories as $category)
-            <option value="{{$category['id']}}">{{$category['name']}}</option>
+            <option value="{{$category['id']}}">{{\App\Models\Category::TYPES[$category['type']]}} | {{$category['name']}}</option>
         @endforeach
     </select>
-
+        <a href="{{route('admin.product.create')}}" type="button" class="btn mb-3 ml-2 btn-success">Добавить</a>
     </div>
 
     <table class="table table-sm">

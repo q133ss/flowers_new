@@ -8,6 +8,9 @@
                 <h4><i class="icon fa fa-check"></i>{{session('success')}}</h4>
             </div>
         @endif
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-success mr-4" data-toggle="modal" data-target="#create-modal">Добавить</button>
+            </div>
         <table class="table table-sm">
             <thead>
             <tr>

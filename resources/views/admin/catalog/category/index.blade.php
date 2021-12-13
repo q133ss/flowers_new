@@ -8,6 +8,9 @@
                 <h4><i class="icon fa fa-check"></i>{{session('success')}}</h4>
             </div>
         @endif
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-success mr-4" data-toggle="modal" data-target="#create-modal">Добавить</button>
+            </div>
         <table class="table table-sm">
             <thead>
             <tr>
@@ -24,23 +27,7 @@
                     <td><img src="{{$category['img']}}" width="100%" height="100px" alt=""></td>
                     <td @if($category['type'] == 'additionallies' || $category['type'] == 'products')onclick="location.href='{{route('admin.sub.category', $category['id'])}}'" style="cursor: pointer"@endif>{{$category['name']}}</td>
                     <td>
-                        @php
-                        $type = 0;
-                            if($category['type'] == 'products'){
-                                $type = 'Букеты';
-                            }elseif($category['type'] == 'additionallies'){
-                                $type = 'Доп. товары';
-                            }elseif($category['type'] == 'urgentlies'){
-                                $type = 'Срочный заказ';
-                            }elseif($category['type'] == 'constr_oazis'){
-                                $type = 'Оазис';
-                            }elseif($category['type'] == 'constr_sub'){
-                                $type = 'Пакет для конструктора';
-                            }elseif($category['type'] == 'constr_main'){
-                                $type = 'Конструктор';
-                            }
-                        @endphp
-                        {{$type}}
+                        {{\App\Models\Category::TYPES[$category['type']]}}
                     </td>
                     <td>
                         <button data-toggle="modal" data-target="#edit-modal{{$category['id']}}" class="btn btn-block btn-warning">Изменить</button>
@@ -85,10 +72,10 @@
                                 <option value="constr_main">Конструктор</option>
                                 <option value="constr_oazis">Оазис</option>
                             </select>
-                            <label for="">Выключить категорию?</label>
+                            <label for="">Статус</label>
                             <select name="status" id="">
-                                <option value="Нет" @if($category['status'] == 0) selected @endif>Нет</option>
-                                <option value="Да">Да</option>
+                                <option value="Нет" @if($category['status'] == 0) selected @endif>Активна</option>
+                                <option value="Да">Выключена</option>
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -122,6 +109,11 @@
                             <option value="constr_sub">Пакет для конструктора</option>
                             <option value="constr_main">Конструктор</option>
                             <option value="constr_oazis">Оазис</option>
+                        </select>
+                        <label for="">Статус</label>
+                        <select name="status" id="">
+                            <option value="1" @if($category['status'] == 0) selected @endif>Активна</option>
+                            <option value="0">Выключена</option>
                         </select>
                     </div>
                     <div class="modal-footer">

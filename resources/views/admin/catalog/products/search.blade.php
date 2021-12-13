@@ -8,8 +8,7 @@
         </div>
     @endif
     <div class="my-header d-flex justify-content-between">
-    <form action="{{route('admin.product.store')}}" method="GET" class="row w-100">
-        @csrf
+    <form action="{{route('admin.product.search')}}" method="GET" class="row w-100">
         <input type="text" value="@if(isset($_GET['search'])){{$_GET['search']}}@endif" name="search" class="form-control col-2" placeholder="Поиск"> <button class="btn btn-success col-1 ml-2 mb-3" type="submit">Поиск</button>
     </form>
 

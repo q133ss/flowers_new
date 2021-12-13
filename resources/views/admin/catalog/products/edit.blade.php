@@ -108,6 +108,26 @@
                         <tr>
                             <th>{{$size['name']}}</th>
                             <th><button type="button" class="ml-3 btn btn-block btn-primary btn-sm size-add" data-id="{{$size['id']}}">+</button></th>
+                            @foreach($product_sizes as $prod_size)
+                                @if($size['id'] == $prod_size['size_id'])
+                                <th id="size_input{{$size['id']}}">
+                                <input type="text" value="{{$prod_size['price']}}" id="size_price{{$size['id']}}" placeholder="Цена" class="ml-4" name="size_price1">
+                                <input type="text" value="{{$prod_size['sale']}}" id="size_price_sale{{$size['id']}}" placeholder="Скидка" class="ml-2" name="size_price_sale1">
+                                <input type="text" value="{{$prod_size['score']}}" id="size_price_score{{$size['id']}}" placeholder="Балы" class="ml-2" name="size_price_score1">
+                                <select name="size_price_status1" id="size_price_status{{$size['id']}}" class="p-1 ml-2"><option value="" disabled="" selected="">Статус</option><option value="1">Активен</option><option value="0">Выключен</option></select>
+                                <span class="ml-2" id="main_span{{$size['id']}}">Главный</span>
+                                <input type="radio" id="size_is_main{{$size['id']}}" @if($prod_size['is_main'] == 1) checked @endif value="1" class="ml-2" name="size_is_main">
+                                </th>
+
+                                <script>
+                                    let el{{$size['id']}} = document.querySelector('.size-add[data-id="{{$size['id']}}"]')
+                                    el{{$size['id']}}.innerHTML = '-';
+                                    el{{$size['id']}}.classList.remove('btn-primary')
+                                    el{{$size['id']}}.classList.add('btn-success')
+                                </script>
+                                @endif
+                            @endforeach
+                            <th id="size_input{{$size['id']}}">
                         </tr>
                     @endforeach
                 </table>
@@ -281,11 +301,22 @@
             let id = $(this).data('id')
             if($(this).html() == '-'){
                 $('#size'+id).remove()
+                $('#size_price'+id).remove()
+                $('#size_price_sale'+id).remove()
+                $('#size_price_score'+id).remove()
+                $('#size_price_status'+id).remove()
+                $('#size_is_main'+id).remove()
+                $('#main_span'+id).remove()
                 $(this).html('+')
                 $(this).addClass('btn-primary')
                 $(this).removeClass('btn-success')
             }else {
                 $('#form-edit').append('<input type="hidden" id="size'+id+'" value="' + id + '" name="sizes[]">')
+                $('#size_input'+id).append('<input type="text" id="size_price'+id+'" placeholder="Цена" class="ml-4" name="size_price'+id+'">')
+                $('#size_input'+id).append('<input type="text" id="size_price_sale'+id+'" placeholder="Скидка" class="ml-2" name="size_price_sale'+id+'">')
+                $('#size_input'+id).append('<input type="text" id="size_price_score'+id+'" value="" placeholder="Балы" class="ml-2" name="size_price_score'+id+'">')
+                $('#size_input'+id).append('<select name="size_price_status'+id+'" id="size_price_status'+id+'" class="p-1 ml-2"><option value="" disabled selected>Статус</option><option value="1">Активен</option><option value="0">Выключен</option></select>')
+                $('#size_input'+id).append('<span class="ml-2" id="main_span'+id+'">Главный</span> <input type="radio" id="size_is_main'+id+'" value="'+id+'" class="ml-2" name="size_is_main">')
                 $(this).removeClass('btn-primary')
                 $(this).addClass('btn-success')
                 $(this).html('-')
@@ -395,7 +426,5 @@
         function size_change_add(val,count){
             $('#m'+count).val(val)
         }
-
-        //Удаляем из базы все, где есть айди товара и проверяем на City Region..
     </script>
 @endsection

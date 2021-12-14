@@ -8,15 +8,23 @@
                     <h4><i class="icon fa fa-check"></i>{{session('success')}}</h4>
                 </div>
             @endif
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success mr-4" data-toggle="modal" data-target="#modalCreate">Добавить</button>
+            <div class="wrap d-flex justify-content-between">
+                <div>
+                    <form action="" class="d-flex">
+                    <input type="text" value="{{@$_GET['search']}}" name="search" class="form-control mr-2" placeholder="Поиск">
+                    <button type="submit" class="btn btn-success">Поиск</button>
+                    </form>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-success mr-4" data-toggle="modal" data-target="#modalCreate">Добавить</button>
+                </div>
             </div>
             <table class="table table-sm">
                 <thead>
                 <tr>
                     <th style="width: 100px;">Локация</th>
-                    <th>ID локации</th>
-                    <th>ID категории</th>
+                    <th>Название локации</th>
+                    <th>Категория</th>
                     <th>Статус</th>
                     <th>Наценка</th>
                     <th style="width: 40px">Изменить</th>
@@ -27,9 +35,17 @@
 
                 @foreach($path as $item)
                     <tr>
-                        <td>{{$item['model']}}</td>
-                        <td>{{$item['model_id']}}</td>
-                        <td>{{$item['category_id']}}</td>
+                        <td>{{$item['locable_type']}}</td>
+                        <td>
+                            @if($item['locable_type'] == 'App\Models\City')
+                                {{@App\Models\City::find($item['locable_id'])->title }}
+                            @elseif($item['locable_type'] == 'App\Models\Region')
+                                 {{@App\Models\Region::find($item['locable_id'])->title}}
+                            @elseif($item['locable_type'] == 'App\Models\Country')
+                                {{@App\Models\Country::find($item['locable_id'])->title}}
+                            @endif
+                        </td>
+                        <td>{{App\Models\Category::find($item['category_id'])->name}}</td>
                         <td>@if($item['status'] == 1) Активен @else Выключен @endif</td>
                         <td>{{$item['charge']}}</td>
                         <td><a href="#" data-toggle="modal" data-target="#exampleModal{{$item['id']}}" class="btn btn-warning">Изменить</a></td>
@@ -56,9 +72,9 @@
                                     <div class="form-group">
                                         <label for="">Модель</label>
                                         <select name="model" id="" class="form-control">
-                                            <option value="City" @if($item['model'] == 'City') selected @endif>City</option>
-                                            <option value="Region" @if($item['model'] == 'Region') selected @endif>Region</option>
-                                            <option value="Country" @if($item['model'] == 'Country') selected @endif>Country</option>
+                                            <option value="App\Models\City" @if($item['model'] == 'City') selected @endif>City</option>
+                                            <option value="App\Models\Region" @if($item['model'] == 'Region') selected @endif>Region</option>
+                                            <option value="App\Models\Country" @if($item['model'] == 'Country') selected @endif>Country</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -118,9 +134,9 @@
                             <div class="form-group">
                                 <label for="">Модель</label>
                                 <select name="model" id="" class="form-control">
-                                    <option value="City">City</option>
-                                    <option value="Region">Region</option>
-                                    <option value="Country">Country</option>
+                                    <option value="App\Models\City">City</option>
+                                    <option value="App\Models\Region">Region</option>
+                                    <option value="App\Models\Country">Country</option>
                                 </select>
                             </div>
                             <div class="form-group">

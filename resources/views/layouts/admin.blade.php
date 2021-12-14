@@ -178,6 +178,11 @@
                                     <p>Патчи размера</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.path.banner')}}" class="nav-link">
+                                    <p>Патчи баннеров</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

@@ -66,11 +66,9 @@
                             <input type="file" value="{{$category['img']}}" name="img"> <br>
                             <input type="text" value="{{$category['name']}}" name="name" placeholder="Название" class="form-control mt-2">
                             <select name="type" id="" class="form-control mt-2">
-                                <option value="products">Букеты</option>
-                                <option value="additionallies">Доп. товары</option>
-                                <option value="constr_sub">Пакет для конструктора</option>
-                                <option value="constr_main">Конструктор</option>
-                                <option value="constr_oazis">Оазис</option>
+                                @foreach(App\Models\Category::TYPES as $key => $value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
                             </select>
                             <label for="">Статус</label>
                             <select name="status" id="">
@@ -88,7 +86,6 @@
         </div>
     @endforeach
 
-
     <div class="modal" id="create-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -104,11 +101,9 @@
                         <input type="file" required name="img"> <br>
                         <input type="text" required name="name" placeholder="Название" class="form-control mt-2">
                         <select name="type" id="" class="form-control mt-2">
-                            <option value="products">Букеты</option>
-                            <option value="additionallies">Доп. товары</option>
-                            <option value="constr_sub">Пакет для конструктора</option>
-                            <option value="constr_main">Конструктор</option>
-                            <option value="constr_oazis">Оазис</option>
+                            @foreach(App\Models\Category::TYPES as $key => $value)
+                                <option value="{{$key}}">{{$value}}</option>
+                            @endforeach
                         </select>
                         <label for="">Статус</label>
                         <select name="status" id="">

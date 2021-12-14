@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\Path\PathProductController;
 use App\Http\Controllers\Admin\Path\PathCategoryController;
 use App\Http\Controllers\Admin\Path\PathSizeController;
+use App\Http\Controllers\Admin\Path\PathBannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -184,6 +185,12 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::post('/path/size/edit/{id}', [PathSizeController::class, 'edit'])->name('admin.path.size.edit');
         Route::post('/path/size/delete/{id}', [PathSizeController::class, 'delete'])->name('admin.path.size.delete');
         Route::post('/path/size/create/', [PathSizeController::class, 'create'])->name('admin.path.size.create');
+
+        //PATH BANNER
+        Route::get('/path/banner', [PathBannerController::class, 'index'])->name('admin.path.banner');
+        Route::post('/path/banner/edit/{id}', [PathBannerController::class, 'edit'])->name('admin.path.banner.edit');
+        Route::post('/path/banner/delete/{id}', [PathBannerController::class, 'delete'])->name('admin.path.banner.delete');
+        Route::post('/path/banner/create/', [PathBannerController::class, 'create'])->name('admin.path.banner.create');
     });
 
     //ABOUT US
@@ -196,6 +203,10 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::get('/offer', [OffersController::class, 'offer'])->name('offer');
     Route::get('/policy', [OffersController::class, 'policy'])->name('policy');
     Route::get('/payment', [OffersController::class, 'payment'])->name('payment');
+
+    //CART
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::get('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
 });
 
 Route::get('/order', [OrderController::class, 'index']);

@@ -11,7 +11,7 @@ use App\Models\Size;
 class PathSizeController extends Controller
 {
     public function index(Request $request){
-        $path = ProductSizePath::get();
+        $path = ProductSizePath::byFilter($request)->get();
         $products = Product::get();
         $sizes = Size::get();
         return view('admin.catalog.path.size.index', [

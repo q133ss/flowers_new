@@ -8,14 +8,23 @@
                     <h4><i class="icon fa fa-check"></i>{{session('success')}}</h4>
                 </div>
             @endif
-            <div class="d-flex justify-content-end">
+            <div class="wrap d-flex justify-content-between">
+                <div>
+                    <form action="" class="d-flex">
+                        <input type="text" value="{{@$_GET['search']}}" name="search" class="form-control mr-2" placeholder="Поиск">
+                        <button type="submit" class="btn btn-success">Поиск</button>
+                    </form>
+                </div>
+            <div>
                 <button type="button" class="btn btn-success mr-4" data-toggle="modal" data-target="#modalCreate">Добавить</button>
             </div>
+            </div>
+
             <table class="table table-sm">
                 <thead>
                 <tr>
                     <th style="width: 100px;">Локация</th>
-                    <th>ID локации</th>
+                    <th>Название локации</th>
                     <th>Главный</th>
                     <th>Товар</th>
                     <th>Статус</th>
@@ -28,10 +37,17 @@
                 </thead>
                 <tbody>
                 @foreach($path as $item)
+{{--                    @dd($item['main'])--}}
                     <tr>
                         <td>{{$item['locable_type']}}</td>
-                        <td>{{$item['locable_id']}}</td>
-                        <td>{{$item['main']}}</td>
+                        <td>@if($item['locable_type'] == 'App\Models\City')
+                                {{@App\Models\City::find($item['locable_id'])->title }}
+                            @elseif($item['locable_type'] == 'App\Models\Region')
+                                {{@App\Models\Region::find($item['locable_id'])->title}}
+                            @elseif($item['locable_type'] == 'App\Models\Country')
+                                {{@App\Models\Country::find($item['locable_id'])->title}}
+                            @endif</td>
+                        <td>@if($item['main'] == false) Нет @else Да @endif</td>
                         <td>
                             @php
                             $product = App\Models\Product::find($item['product_id']);
@@ -67,9 +83,9 @@
                                     <div class="form-group">
                                         <label for="">Модель</label>
                                         <select name="model" id="" class="form-control">
-                                            <option value="City" @if($item['locable_type'] == 'City') selected @endif>City</option>
-                                            <option value="Region" @if($item['locable_type'] == 'Region') selected @endif>Region</option>
-                                            <option value="Country" @if($item['locable_type'] == 'Country') selected @endif>Country</option>
+                                            <option value="App\Models\City" @if($item['locable_type'] == 'City') selected @endif>City</option>
+                                            <option value="App\Models\Region" @if($item['locable_type'] == 'Region') selected @endif>Region</option>
+                                            <option value="App\Models\Country" @if($item['locable_type'] == 'Country') selected @endif>Country</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -151,7 +167,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{$item['model']}} #{{$item['model_id']}}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Создать</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -160,9 +176,9 @@
                             <div class="form-group">
                                 <label for="">Модель</label>
                                 <select name="model" id="" class="form-control">
-                                    <option value="City">City</option>
-                                    <option value="Region">Region</option>
-                                    <option value="Country">Country</option>
+                                    <option value="App\Models\City">City</option>
+                                    <option value="App\Models\Region">Region</option>
+                                    <option value="App\Models\Country">Country</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -188,7 +204,7 @@
                                 <label for="">Размер</label>
                                 <select name="size_id" id="" class="form-control">
                                     @foreach($sizes as $size)
-                                        <option value="{{$size['id']}}" @if($size['id'] == $item['size_id']) selected @endif>{{$size['name']}}</option>
+                                        <option value="{{$size['id']}}" @if(isset($item['size_id']) && $size['id'] == $item['size_id']) selected @endif>{{$size['name']}}</option>
                                     @endforeach
                                 </select>
                             </div>

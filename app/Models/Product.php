@@ -105,10 +105,10 @@ class Product extends Model implements Sortable
         return $this->belongsTo(\App\Models\Category::class, 'category_id');
     }
 
-    
+
     public function scopeByCategory($model, $id, $request) {
         $r = $this->getDefProds();
-        
+
         if ($request->has('order') && $request->get('order') == 'all') {
             $cat = self::find($id);
             $r->where('type', $cat->type);
@@ -144,9 +144,13 @@ class Product extends Model implements Sortable
         return $r;
     }
 
-    
+
     public function scopeById($model, $id) {
-        return $this->getDefProds()->where('id', $id);
+        if(is_array($id)){
+            return $this->getDefProds()->whereIn('id', $id);
+        }else {
+            return $this->getDefProds()->where('id', $id);
+        }
     }
 
     private function getDefProds(){

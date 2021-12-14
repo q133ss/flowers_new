@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model as Model;
 
 
@@ -26,7 +27,7 @@ class ProductPath extends Model
 
 
     public $table = 'product_paths';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -34,8 +35,8 @@ class ProductPath extends Model
 
 
     public $fillable = [
-        'model',
-        'model_id',
+        'locable_type',
+        'locable_id',
         'product_id',
         'status',
         'price',
@@ -51,8 +52,8 @@ class ProductPath extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'model' => 'string',
-        'model_id' => 'integer',
+        'locable_type' => 'string',
+        'locable_id' => 'integer',
         'product_id' => 'integer',
         'status' => 'string',
         'price' => 'integer',
@@ -67,8 +68,8 @@ class ProductPath extends Model
      * @var array
      */
     public static $rules = [
-        'model' => 'required|string|max:50',
-        'model_id' => 'required',
+        'locable_type' => 'required|string|max:50',
+        'locable_id' => 'required',
         'product_id' => 'required',
         'status' => 'required|string|max:50',
         'price' => 'nullable|integer',
@@ -83,5 +84,52 @@ class ProductPath extends Model
     public function product()
     {
         return $this->belongsTo(\App\Models\Product::class, 'product_id');
+    }
+
+
+    public function scopeByFilter($model, $r){
+        $s = $r->get('search');
+        $sArr = explode(' ', $s);
+
+        $paths = self::select(['*']);
+        foreach($sArr as $e) {
+            if (in_array(strtolower($e), ['city', 'country', 'region'])) {
+                $paths->orWhere('locable_type', ucfirst(strtolower($e)));
+            } else if (in_array(strtolower($e), ['on', 'off'])) {
+                $paths->orWhere('status', strtolower($e) == 'on' ? 1 : 0);
+            } else if (preg_match('#^([0-9]{1,9999})(-([0-9]{1,9999})){0,1}$#', $e, $matches)) {
+                if (count($matches) > 2) {
+                    $paths->whereBetween('price', [$matches[1], $matches[3]]);
+                } else {
+                    $paths->where('price', $matches[1]);
+                }
+            }else if (preg_match('#^([0-9]{1,9999})(-([0-9]{1,9999})){0,1}$#', $e, $matches)) {
+                $paths->whereBetween('score', [$matches[1], $matches[3]]);
+            }else if (preg_match('#^([0-9]{1,99})(-([0-9]{1,99})){0,1}$#', $e, $matches)) {
+                $paths->whereBetween('sale', [$matches[1], $matches[3]]);
+            }else if (preg_match('#^([0-9]{1,99})(-([0-9]{1,99})){0,1}$#', $e, $matches)) {
+                $paths->whereBetween('score', [$matches[1], $matches[3]]);
+            }else {
+                $paths->orWhereHas('product', function($q) use($e){
+                    $q->where('products.name', 'LIKE', '%'.$e.'%');
+                });
+                //dd($e);
+                $paths->orWhereHasMorph(
+                    'locable',
+                    [City::class,  Region::class, Country::class],
+                    function(Builder $q, $a) use($e) {
+                        $name = \Str::plural(str_replace('App\\Models\\', '', $a));
+                        $name = strtolower($name);
+                        $q->where($name.'.title', 'LIKE', '%'.$e.'%');
+                    }
+                );
+            }
+        }
+
+        return $paths;
+    }
+
+    public function locable(){
+        return $this->morphTo();
     }
 }

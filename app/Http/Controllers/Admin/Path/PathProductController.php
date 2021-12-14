@@ -8,8 +8,8 @@ use App\Models\ProductPath;
 
 class PathProductController extends Controller
 {
-    public function index(){
-        $path = ProductPath::get();
+    public function index(Request $request){
+        $path = ProductPath::byFilter($request)->get();
         return view('admin.catalog.path.product.index', [
             'path' => $path
         ]);
@@ -17,8 +17,8 @@ class PathProductController extends Controller
 
     public function edit(Request $request,$id){
        $path = ProductPath::find($id);
-       $path->model = $request['model'];
-       $path->model_id = $request['model_id'];
+       $path->locable_type = $request['model'];
+       $path->locable_id = $request['model_id'];
        $path->product_id = $request['product_id'];
        $path->status = $request['status'];
        $path->price = $request['price'];
@@ -36,8 +36,8 @@ class PathProductController extends Controller
 
     public function create(Request $request){
         $path = new ProductPath();
-        $path->model = $request['model'];
-        $path->model_id = $request['model_id'];
+        $path->locable_type = $request['model'];
+        $path->locable_id = $request['model_id'];
         $path->product_id = $request['product_id'];
         $path->status = $request['status'];
         $path->price = $request['price'];

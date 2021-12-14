@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Патч категории')
+@section('title', 'Патч размера')
 @section('content')
         <div class="card-body p-0">
             @if(session('success'))
@@ -16,32 +16,43 @@
                 <tr>
                     <th style="width: 100px;">Локация</th>
                     <th>ID локации</th>
-                    <th>ID категории</th>
+                    <th>Главный</th>
+                    <th>Товар</th>
                     <th>Статус</th>
-                    <th>Наценка</th>
+                    <th>Цена</th>
+                    <th>Балы</th>
+                    <th>Скидка</th>
                     <th style="width: 40px">Изменить</th>
                     <th style="width: 40px">Удалить</th>
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($path as $item)
                     <tr>
-                        <td>{{$item['model']}}</td>
-                        <td>{{$item['model_id']}}</td>
-                        <td>{{$item['category_id']}}</td>
-                        <td>@if($item['status'] == 1) Активен @else Выключен @endif</td>
-                        <td>{{$item['charge']}}</td>
+                        <td>{{$item['locable_type']}}</td>
+                        <td>{{$item['locable_id']}}</td>
+                        <td>{{$item['main']}}</td>
+                        <td>
+                            @php
+                            $product = App\Models\Product::find($item['product_id']);
+                            @endphp
+                            {{$product['name']}}
+                        </td>
+                        <td>{{$item['size_id']}}</td>
+                        <td>{{$item['status']}}</td>
+                        <td>{{$item['price']}}</td>
+                        <td>{{$item['score']}}</td>
+                        <td>{{$item['sale']}}</td>
                         <td><a href="#" data-toggle="modal" data-target="#exampleModal{{$item['id']}}" class="btn btn-warning">Изменить</a></td>
                         <td>
-                            <form action="{{route('admin.path.category.delete', $item['id'])}}" method="POST">
+                            <form action="{{route('admin.path.size.delete', $item['id'])}}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-block btn-danger delete-btn">X</button>
                             </form>
                         </td>
                     </tr>
                     {{--    Modal edit--}}
-                    <form action="{{route('admin.path.category.edit', $item['id'])}}" method="POST">
+                    <form action="{{route('admin.path.size.edit', $item['id'])}}" method="POST">
                     @csrf
                     <div class="modal fade" id="exampleModal{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -56,20 +67,42 @@
                                     <div class="form-group">
                                         <label for="">Модель</label>
                                         <select name="model" id="" class="form-control">
-                                            <option value="City" @if($item['model'] == 'City') selected @endif>City</option>
-                                            <option value="Region" @if($item['model'] == 'Region') selected @endif>Region</option>
-                                            <option value="Country" @if($item['model'] == 'Country') selected @endif>Country</option>
+                                            <option value="City" @if($item['locable_type'] == 'City') selected @endif>City</option>
+                                            <option value="Region" @if($item['locable_type'] == 'Region') selected @endif>Region</option>
+                                            <option value="Country" @if($item['locable_type'] == 'Country') selected @endif>Country</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">ID модели</label>
-                                        <input type="text" name="model_id" value="{{$item['model_id']}}" placeholder="17" class="form-control">
+                                        <label for="">Главный</label>
+                                        <select name="main" id="">
+                                            <option value="1">Да</option>
+                                            <option value="0" @if($item['main'] == 0) selected @endif>Нет</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Локация</label>
+                                        <input type="text" name="model_id" value="{{$item['locable_id']}}" placeholder="17" class="form-control">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="">ID категории</label>
-                                        <input type="text" name="category_id" value="{{$item['category_id']}}" placeholder="17" class="form-control">
+                                        <label for="">Товар</label>
+                                        <select name="product_id" id="" class="form-control">
+                                            @foreach($products as $product)
+                                                <option value="{{$product['id']}}" @if($product['id'] == $item['product_id']) selected @endif>{{$product['name']}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+
+
+                                    <div class="form-group">
+                                        <label for="">Размер</label>
+                                        <select name="size_id" id="" class="form-control">
+                                            @foreach($sizes as $size)
+                                                <option value="{{$size['id']}}" @if($size['id'] == $item['size_id']) selected @endif>{{$size['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
 
                                     <div class="form-group">
                                         <label for="">Статус</label>
@@ -80,10 +113,19 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="">Наценка</label>
-                                        <input type="text" name="charge" class="form-control" value="{{$item['charge']}}">
+                                        <label for="">Цена</label>
+                                        <input type="text" name="price" class="form-control" value="{{$item['price']}}">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="">Балы</label>
+                                        <input type="text" name="score" class="form-control" value="{{$item['score']}}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Скидка</label>
+                                        <input type="text" name="sale" class="form-control" value="{{$item['sale']}}">
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
@@ -103,13 +145,13 @@
         </div>
 
         {{--    Modal create--}}
-        <form action="{{route('admin.path.category.create')}}" method="POST">
+        <form action="{{route('admin.path.size.create')}}" method="POST">
             @csrf
             <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Создать патч</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">{{$item['model']}} #{{$item['model_id']}}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -127,12 +169,29 @@
                                 <label for="">ID модели</label>
                                 <input type="text" name="model_id" placeholder="17" class="form-control">
                             </div>
-
                             <div class="form-group">
-                                <label for="">ID категории</label>
-                                <input type="text" name="category_id" placeholder="17" class="form-control">
+                                <label for="">Главный</label>
+                                <select name="main" id="">
+                                    <option value="1">Да</option>
+                                    <option value="0" >Нет</option>
+                                </select>
                             </div>
-
+                            <div class="form-group">
+                                <label for="">Товар</label>
+                                <select name="product_id" id="" class="form-control">
+                                    @foreach($products as $product)
+                                        <option value="{{$product['id']}}">{{$product['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Размер</label>
+                                <select name="size_id" id="" class="form-control">
+                                    @foreach($sizes as $size)
+                                        <option value="{{$size['id']}}" @if($size['id'] == $item['size_id']) selected @endif>{{$size['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="">Статус</label>
                                 <select name="status" id="" class="form-control">
@@ -142,10 +201,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="">Наценка</label>
-                                <input type="text" name="charge" class="form-control">
+                                <label for="">Цена</label>
+                                <input type="text" name="price" class="form-control">
                             </div>
 
+                            <div class="form-group">
+                                <label for="">Балы</label>
+                                <input type="text" name="score" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Скидка</label>
+                                <input type="text" name="sale" class="form-control">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>

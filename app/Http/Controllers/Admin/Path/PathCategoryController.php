@@ -8,8 +8,8 @@ use App\Models\CategoryPath;
 
 class PathCategoryController extends Controller
 {
-    public function index(){
-        $path = CategoryPath::get();
+    public function index(Request $request){
+        $path = CategoryPath::byFilter($request)->get();
         return view('admin.catalog.path.category.index', [
             'path' => $path
         ]);

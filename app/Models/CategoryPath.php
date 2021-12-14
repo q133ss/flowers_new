@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model as Model;
-
+use Illuminate\Database\Eloquent\Relations\Relation;
+use \App\Models\City;
+use \App\Models\Region;
+use \App\Models\Country;
 
 
 /**
@@ -23,7 +27,7 @@ class CategoryPath extends Model
 
 
     public $table = 'category_paths';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -71,5 +75,49 @@ class CategoryPath extends Model
     public function category()
     {
         return $this->belongsTo(\App\Models\Category::class, 'category_id');
+    }
+
+    public function scopeByFilter($model, $r){
+        $s = $r->get('search');
+        $sArr = explode(' ', $s);
+
+        $paths = self::select(['*']);
+        foreach($sArr as $e) {
+            if (in_array(strtolower($e), ['city', 'country', 'region'])) {
+                $paths->orWhere('locable_type', ucfirst(strtolower($e)));
+            } else if (in_array(strtolower($e), ['on', 'off'])) {
+                $paths->orWhere('status', strtolower($e) == 'on' ? 1 : 0);
+            } else if (preg_match('#^([0-9]{1,2})(-([0-9]{1,2})){0,1}$#', $e, $matches)) {
+                if (count($matches) > 2) {
+                    $paths->whereBetween('charge',[$matches[1], $matches[3]]);
+                }else{
+                    $paths->where('charge',$matches[1]);
+                }
+            } else {
+                $paths->orWhereHas('category', function($q) use($e){
+                    $q->where('categories.name', 'LIKE', '%'.$e.'%');
+                });
+                //dd($e);
+                $paths->orWhereHasMorph(
+                    'locable',
+                    ['City',  'Region', 'Country'],
+                    function(Builder $q, $a) use($e) {
+                        $name = \Str::plural(str_replace('App\\Models\\', '', $a));
+                        $name = strtolower($name);
+                        $q->where($name.'.title', 'LIKE', '%'.$e.'%');
+                    }
+                );
+            }
+        }
+
+        return $paths;
+    }
+
+    public function locable(){
+        return $this->morphTo();
+    }
+//
+    public function getMorphClass(){
+        dd($this->morphClass, Relation::morphMap());
     }
 }

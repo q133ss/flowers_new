@@ -149,33 +149,40 @@
                                     <p>Продукты</p>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
 
-                            <li class="nav-item menu-is-opening menu-open">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>
-                                        Патчи
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-newspaper"></i>
+                            <p>
+                                Патчи
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.path.product')}}" class="nav-link">
+                                    <p>Патчи товара</p>
                                 </a>
-                                <ul class="nav nav-treeview" style="display: block;">
-                                    <li class="nav-item">
-                                        <a href="{{route('admin.path.product')}}" class="nav-link">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Патчи товара</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('admin.path.category')}}" class="nav-link">
-                                            <i class="far fa-dot-circle nav-icon"></i>
-                                            <p>Патчи категорий</p>
-                                        </a>
-                                    </li>
-                                   
-                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.path.category')}}" class="nav-link">
+                                    <p>Патчи категорий</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.path.size')}}" class="nav-link">
+                                    <p>Патчи размера</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
+
+
+
 
 
                     <li class="nav-item">

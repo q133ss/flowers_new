@@ -43,6 +43,7 @@ use App\Http\Controllers\Admin\Path\PathProductController;
 use App\Http\Controllers\Admin\Path\PathCategoryController;
 use App\Http\Controllers\Admin\Path\PathSizeController;
 use App\Http\Controllers\Admin\Path\PathBannerController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -207,6 +208,7 @@ Route::middleware(['isUserCity'])->group(function () {
     //CART
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/cart-edit/{cookie}/{sign}/{count}', [CartController::class, 'edit'])->name('cart.edit');
 });
 
 Route::get('/order', [OrderController::class, 'index']);

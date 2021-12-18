@@ -44,6 +44,7 @@ use App\Http\Controllers\Admin\Path\PathCategoryController;
 use App\Http\Controllers\Admin\Path\PathSizeController;
 use App\Http\Controllers\Admin\Path\PathBannerController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Admin\NotificatonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -192,6 +193,14 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::post('/path/banner/edit/{id}', [PathBannerController::class, 'edit'])->name('admin.path.banner.edit');
         Route::post('/path/banner/delete/{id}', [PathBannerController::class, 'delete'])->name('admin.path.banner.delete');
         Route::post('/path/banner/create/', [PathBannerController::class, 'create'])->name('admin.path.banner.create');
+
+        //NOTIFICATIONS
+        Route::get('/notifications', [NotificatonController::class, 'index'])->name('admin.notifications.index');
+        Route::get('/notifications/create', [NotificatonController::class, 'create'])->name('admin.notifications.create');
+        Route::post('/notifications/store', [NotificatonController::class, 'store'])->name('admin.notifications.store');
+        Route::get('/notifications/edit/{id}', [NotificatonController::class, 'edit'])->name('admin.notifications.edit');
+        Route::post('/notifications/update/{id}', [NotificatonController::class, 'update'])->name('admin.notifications.update');
+        Route::post('/notifications/destroy/{id}', [NotificatonController::class, 'destroy'])->name('admin.notifications.destroy');
     });
 
     //ABOUT US

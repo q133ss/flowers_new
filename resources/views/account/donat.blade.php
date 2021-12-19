@@ -10,15 +10,18 @@
             <div class="header-profile__donat-circle-item">Мемоджи</div>
         </div>
         <div class="header-profile__donat-info">
+            <form action="{{route('profile.manager.donat')}}" method="POST" style="display:grid; justify-content: center; width: 100%">
+                @csrf
             <div class="header-profile__donat-info-price">
-                <input type="text" placeholder="Сумма блогодарности" id="profileDonatePrice">
+                <input type="text" placeholder="Сумма блогодарности" name="sum" id="profileDonatePrice">
                 <label for="profileDonatePrice">Введите сумму благодарности</label>
             </div>
             <div class="header-profile__donat-info-id">
-                <input type="text" class="" placeholder="№ заказа" id="profileDonateID">
+                <input type="text" class="" name="order" placeholder="№ заказа" id="profileDonateID">
                 <label for="profileDonateID">Введите № заказа</label>
             </div>
-            <button class="header-profile__donat-info-btn"><a href="#">Оплатить</a></button>
+            <button type="submit" class="header-profile__donat-info-btn"><a href="#">Оплатить</a></button>
+            </form>
         </div>
     </div>
 

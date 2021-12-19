@@ -45,6 +45,8 @@ use App\Http\Controllers\Admin\Path\PathSizeController;
 use App\Http\Controllers\Admin\Path\PathBannerController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\NotificatonController;
+use App\Http\Controllers\API\SberController;
+use App\Http\Controllers\SubscribeViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,15 +59,18 @@ use App\Http\Controllers\Admin\NotificatonController;
 |
 */
 
-Route::get('/city', [CityController::class, 'index'])->name('city');
 Auth::routes();
+Route::get('/city', [CityController::class, 'index'])->name('city');
 Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city');
+Route::get('/change-city/{name}', [CityController::class, 'changeCity'])->name('change.city');
+Route::post('/city/find', [CityController::class, 'cityFind'])->name('city.find');
 
 Route::middleware(['isUserCity'])->group(function () {
     Route::get('/', [CatalogController::class, 'index'])->name('home');
     Route::get('/product/{id}', [CatalogController::class, 'product']);
     Route::get('/{id}', [CatalogController::class, 'category'])->where('id', '[0-9]+')->name('product.cat');
 
+    Route::get('/category/middle/{title}', [AdditionallyController::class, 'category_middle'])->name('category.middle');
     Route::get('/additionally/product/{id}', [AditionalyController::class, 'product']);
     Route::get('/additionally/{id}', [AdditionallyController::class, 'category'])->name('addit.cat');
 
@@ -77,10 +82,13 @@ Route::middleware(['isUserCity'])->group(function () {
     //NEWS
     Route::get('/news', [NewsController::class, 'index'])->name('news.index');
     Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');
+    Route::post('/news/sort/{sort}', [NewsController::class, 'sort'])->name('news.sort');
     //QUIZ
     Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
     //NEWS ADD COMMENT
     Route::post('/news/add/comment/{news_id}', [NewsController::class, 'add_comment'])->name('news.add.comment');
+    //SUBSCRIBE
+    Route::get('/subscribe', [SubscribeViewController::class, 'index'])->name('subscribe.index');
 
     //ACCOUNT
     Route::group(['prefix' => 'account', 'middleware' => ['profileCheck']], function(){
@@ -92,6 +100,7 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/events', [EventController::class, 'index'])->name('profile.event');
         Route::get('/stock', [StockController::class, 'index'])->name('profile.stock');
         Route::get('/donat', [DonatController::class, 'index'])->name('profile.donat');
+        Route::post('/donat/submit', [DonatController::class, 'submit'])->name('profile.manager.donat');
         Route::get('/history', [HistoryController::class, 'index'])->name('profile.history');
         Route::get('/offer', [OfferController::class, 'index'])->name('profile.offer');
         Route::get('/policy', [PolicyController::class, 'index'])->name('profile.policy');
@@ -201,6 +210,11 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/notifications/edit/{id}', [NotificatonController::class, 'edit'])->name('admin.notifications.edit');
         Route::post('/notifications/update/{id}', [NotificatonController::class, 'update'])->name('admin.notifications.update');
         Route::post('/notifications/destroy/{id}', [NotificatonController::class, 'destroy'])->name('admin.notifications.destroy');
+
+        //EVENTS
+        Route::post('/settings/event/edit/{id}', [SettingController::class, 'event_edit'])->name('settings.event.edit');
+        Route::get('/settings/event/delete/{id}', [SettingController::class, 'event_delete'])->name('settings.event.delete');
+        Route::post('/settings/event/create', [SettingController::class, 'event_create'])->name('settings.event.create');
     });
 
     //ABOUT US
@@ -218,6 +232,10 @@ Route::middleware(['isUserCity'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
     Route::get('/cart-edit/{cookie}/{sign}/{count}', [CartController::class, 'edit'])->name('cart.edit');
+
+    //CHECKOUT
+    Route::post('/checkout/{id}/{sum}',[SberController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout/delivery',[SberController::class, 'delivery'])->name('delivery.checkout');
 });
 
 Route::get('/order', [OrderController::class, 'index']);

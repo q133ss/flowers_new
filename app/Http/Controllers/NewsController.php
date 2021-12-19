@@ -35,4 +35,14 @@ class NewsController extends Controller
             return redirect()->back()->with('message','Войдите в систему');
         }
     }
+
+    public function sort(Request $request,$sort){
+        if($sort == 'new'){
+            $news = News::orderBy('created_at', 'ASC')->paginate(6);
+                return view('news.items', compact('news'))->render();
+        }elseif($sort == 'old'){
+            $news = News::orderBy('created_at', 'DESC')->paginate(6);
+                return view('news.items', compact('news'))->render();
+        }
+    }
 }

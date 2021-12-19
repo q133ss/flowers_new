@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     public function index(){
-        return view('account.orders');
+        $orders_current = \Auth::user()->orders->where('status',1);
+        $orders_old = \Auth::user()->orders->where('status',4);
+        return view('account.orders',[
+            'orders_current' => $orders_current,
+            'orders_old' => $orders_old
+        ]);
     }
 }

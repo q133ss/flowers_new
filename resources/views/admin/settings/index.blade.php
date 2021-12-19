@@ -17,11 +17,9 @@
                         <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Квиз</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Messages</a>
+                        <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">События</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="true">Settings</a>
-                    </li>
+
                 </ul>
             </div>
             <div class="card-body">
@@ -211,10 +209,35 @@
 
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                        Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
-                    </div>
-                    <div class="tab-pane fade active show" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                        Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Событие</th>
+                                <th style="width: 40px;">Изменить</th>
+                                <th style="width: 40px">Удалить</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($events as $event)
+                            <tr>
+                                <td>{{$event['id']}}</td>
+                                <td>{{$event['title']}}</td>
+                                <td>
+                                    <button type="button" data-toggle="modal" data-target="#event-edit-{{$event['id']}}" class="btn btn-warning">Изменить</button>
+                                </td>
+                                <td><a href="{{route('settings.event.delete', $event['id'])}}" class="btn btn-danger">X</a></td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                        <form action="{{route('settings.event.create')}}" method="POST">
+                            @csrf
+                            <input type="text" name="name" placeholder="Название события" class="form-control">
+                            <button type="submit" class="btn btn-success mt-2">Отправить</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -441,4 +464,31 @@
             </div>
         </div>
 {{--    end edit--}}
+
+{{--Event edit--}}
+        @foreach($events as $event)
+        <div class="modal" id="event-edit-{{$event['id']}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="{{route('settings.event.edit', $event['id'])}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title">Изменить</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" name="name" value="{{$event['title']}}">
+                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endforeach
+{{--end--}}
 @endsection

@@ -89,9 +89,9 @@ class User extends Authenticatable
         'email_verified_at' => 'nullable',
         'password' => 'required|string|max:255',
         'two_factor_secret' => 'nullable|string',
-        'two_factor_recovery_codes' => 'required|string',
+        'two_factor_recovery_codes' => 'nullable|string',
         'phone' => 'nullable|string|max:255',
-        'money' => 'required|numeric',
+        'money' => 'nullable|numeric',
         'city_id' => 'nullable',
         'date_of_birthday' => 'required|string|max:255',
         'scores' => 'required',
@@ -111,7 +111,7 @@ class User extends Authenticatable
      **/
     public function notificationUsers()
     {
-        return $this->hasMany(\App\Models\NotificationUser::class, 'user_id');
+        return $this->belongsToMany(\App\Models\Notification::class, 'notification_users' ,'user_id', 'notifications_id');
     }
 
     /**

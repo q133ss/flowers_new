@@ -21,16 +21,15 @@ class CityController extends Controller
         return redirect()->route('home');
     }
 
-//    public function index()
-//    {
-//        $news = News::select()->paginate();
-//        if (isAjax()) {
-//            view('news.items', compact('news'));
-//        } else {
-//
-//            view('news.index', compact('news'));
-//
-//            @include(''), compact(product)
-//        }
-//    }
+    public function changeCity($name){
+        $city = City::where('title', $name)->first();
+        Cookie::forget('city_id');
+        Cookie::queue('city_id', $city['id'], 43800);
+        return redirect()->back();
+    }
+
+    public function cityFind(Request $request){
+        $cities = City::where('title','LIKE', "%$request->city%")->get();
+        return view('ajax.city.city', compact('cities'))->render();
+    }
 }

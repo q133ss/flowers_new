@@ -20,6 +20,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/css/style.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body>
 
@@ -400,7 +401,7 @@
                         </div>
                         <ul class="menu__block-contact-social">
                             <li class="menu__block-contact-social-instagram">
-                                <a href="#">
+                                <a href="https://www.instagram.com/beehappy24.ru/">
                                     <div class="menu__block-contact-social-bg">
                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0)">
@@ -419,7 +420,7 @@
                                 </a>
                             </li>
                             <li class="menu__block-contact-social-vk">
-                                <a href="#">
+                                <a href="https://vk.com/id596874506">
                                     <div class="menu__block-contact-social-bg">
                                         <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M11.6175 5.16086C11.3911 4.84586 11.4559 4.70571 11.6175 4.42414C11.6204 4.42093 13.4889 1.57564 13.6814 0.610714L13.6826 0.610071C13.7782 0.258428 13.6826 0 13.22 0H11.6892C11.2996 0 11.1199 0.221786 11.0236 0.469929C11.0236 0.469929 10.2443 2.52579 9.14173 3.85843C8.78589 4.2435 8.62138 4.36693 8.42712 4.36693C8.33146 4.36693 8.1827 4.2435 8.1827 3.89186V0.610071C8.1827 0.188357 8.07361 0 7.75102 0H5.3441C5.09968 0 4.95442 0.196714 4.95442 0.379929C4.95442 0.779786 5.50569 0.871714 5.56286 1.99671V4.43764C5.56286 4.9725 5.47477 5.07086 5.27935 5.07086C4.759 5.07086 3.49604 3.00664 2.7476 0.644143C2.59651 0.185786 2.44892 0.000642811 2.05632 0.000642811H0.525018C0.0880864 0.000642811 0 0.222428 0 0.470571C0 0.909 0.520351 3.08893 2.41975 5.96893C3.68563 7.93479 5.46836 9 7.09008 9C8.06486 9 8.18387 8.76343 8.18387 8.3565C8.18387 6.47807 8.09578 6.30064 8.58405 6.30064C8.81039 6.30064 9.20007 6.42407 10.1101 7.37229C11.1502 8.49664 11.3211 9 11.9033 9H13.434C13.8704 9 14.0915 8.76343 13.9643 8.29671C13.6732 7.31507 11.7062 5.29586 11.6175 5.16086Z" fill="white"/>
@@ -429,7 +430,7 @@
                                 </a>
                             </li>
                             <li class="menu__block-contact-social-viber">
-                                <a href="#">
+                                <a href="viber://add?number=79891970713">
                                     <div class="menu__block-contact-social-bg">
                                         <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M14.6042 9.32664C15.0844 5.28444 14.3735 2.7325 13.0912 1.57825L13.0918 1.57758C11.0221 -0.393551 4.03227 -0.685297 1.55611 1.66611C0.444123 2.81633 0.052445 4.50444 0.00952139 6.59429C-0.0334023 8.6848 -0.0843741 12.6009 3.56481 13.6633H3.56816L3.56481 15.2857C3.56481 15.2857 3.53999 15.9429 3.95984 16.075C4.44005 16.2306 4.65735 15.9255 6.15096 14.1415C8.64858 14.3581 10.5667 13.8618 10.7847 13.7894C11.2891 13.6204 14.1428 13.2428 14.6042 9.32664ZM6.3971 13C6.3971 13 4.8163 14.9711 4.32469 15.4828C4.16373 15.6492 3.98734 15.6337 3.99002 15.3038C3.99002 15.0871 4.00209 12.6103 4.00209 12.6103C0.908235 11.7237 1.09066 8.38903 1.12419 6.64459C1.15773 4.89947 1.47697 3.47025 2.41861 2.50782C4.59095 0.470958 10.719 0.926351 12.2803 2.3938C14.1891 4.08593 13.5097 8.86656 13.5137 9.02953C13.1214 12.2984 10.8088 12.5057 10.3836 12.6472C10.2019 12.7076 8.51511 13.1415 6.3971 13Z" fill="white"/>
@@ -443,7 +444,7 @@
                                 </a>
                             </li>
                             <li class="menu__block-contact-social-whatsapp">
-                                <a href="#">
+                                <a href="https://api.whatsapp.com/send/?phone=79891970713&text&app_absent=0">
                                     <div class="menu__block-contact-social-bg">
                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M10.942 8.94235L10.9363 8.98922C9.56196 8.30422 9.41821 8.21297 9.24071 8.47922C9.11759 8.6636 8.75884 9.08172 8.65071 9.20547C8.54134 9.32735 8.43259 9.33672 8.24696 9.25235C8.05946 9.1586 7.45759 8.96172 6.74509 8.32422C6.19009 7.82735 5.81759 7.21797 5.70759 7.03047C5.52446 6.71422 5.90759 6.66922 6.25634 6.00922C6.31884 5.87797 6.28696 5.77485 6.24071 5.68172C6.19384 5.58797 5.82071 4.66922 5.66446 4.30297C5.51446 3.93797 5.36009 3.98422 5.24446 3.98422C4.88446 3.95297 4.62134 3.95797 4.38946 4.19922C3.38071 5.30797 3.63509 6.45172 4.49821 7.66797C6.19446 9.88797 7.09821 10.2967 8.75071 10.8642C9.19696 11.0061 9.60384 10.9861 9.92571 10.9398C10.2845 10.883 11.0301 10.4892 11.1857 10.0486C11.3451 9.60797 11.3451 9.24235 11.2982 9.15797C11.252 9.0736 11.1295 9.02672 10.942 8.94235Z" fill="white"/>
@@ -454,7 +455,7 @@
                                 </a>
                             </li>
                             <li class="menu__block-contact-social-telegram">
-                                <a href="#">
+                                <a href="https://tlgg.ru/beehappy24ru">
                                     <div class="menu__block-contact-social-bg">
                                         <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5.88588 7.24974L5.63775 10.3209C5.99276 10.3209 6.14651 10.1867 6.33089 10.0256L7.9953 8.62583L11.4441 10.8484C12.0767 11.1586 12.5223 10.9952 12.6929 10.3363L14.9567 1.00177L14.9573 1.00122C15.158 0.178422 14.6192 -0.143326 14.0029 0.0585227L0.696378 4.54155C-0.211769 4.85175 -0.198019 5.29725 0.541999 5.49909L3.94396 6.43024L11.846 2.07921C12.2179 1.86251 12.556 1.98241 12.2779 2.19911L5.88588 7.24974Z" fill="white"/>
@@ -466,7 +467,7 @@
                         </ul>
                     </div>
                     <ul class="menu__block-catalog">
-                        <li class="menu__block-catalog-bouquet">
+                        <li class="menu__block-catalog-bouquet" onclick="location.href='{{route('constructor')}}'">
                             <div class="menu__block-catalog-bouquet-1">
                                 <div class="menu__block-catalog-bouquet-2">
                                     <p>Конструктор букетов</p>
@@ -528,7 +529,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="menu__block-catalog-manager">
+                        <li class="menu__block-catalog-manager" @if(Auth::check()) onclick='location.href="{{route('profile.donat')}}"' @else data-bs-toggle="modal" data-bs-target="#modelHeader-1" @endif>
                             <div class="menu__block-catalog-manager-1">
                                 <div class="menu__block-catalog-manager-2">
                                     <p>Благодарность менеджеру</p>
@@ -568,7 +569,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="menu__block-catalog-order">
+                        <li class="menu__block-catalog-order" onclick="location.href='{{route('urgently')}}'">
                             <div class="menu__block-catalog-order-1">
                                 <div class="menu__block-catalog-order-2">
                                     <p>Быстрый заказ</p>
@@ -583,7 +584,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="menu__block-catalog-client">
+                        <li class="menu__block-catalog-client" @if(Auth::check()) onclick='location.href="{{route('profile.index')}}"' @else data-bs-toggle="modal" data-bs-target="#modelHeader-1" @endif>
                             <div class="menu__block-catalog-client-1">
                                 <div class="menu__block-catalog-client-2">
                                     <p>Проверить заказ</p>
@@ -642,18 +643,9 @@
                                 <div class="header__block-list-1-btn-g-2">
                                     <select id="headerCity">
                                         <option value=""></option>
-                                        <option value="Абаза">Абаза</option>
-                                        <option value="Абакан">Абакан</option>
-                                        <option value="Абдулино">Абдулино</option>
-                                        <option value="Абинск">Абинск</option>
-                                        <option value="Агидель">Агидель</option>
-                                        <option value="Агрыз">Агрыз</option>
-                                        <option value="Адыгейск">Адыгейск</option>
-                                        <option value="Азнакаево">Азнакаево</option>
-                                        <option value="Азов">Азов</option>
-                                        <option value="Ак-Довурак">Ак-Довурак</option>
-                                        <option value="Аксай">Аксай</option>
-                                        <option value="Алагир">Алагир</option>
+                                        @foreach($cities as $city)
+                                            <option id="header-city-{{$city['id']}}" value="{{$city['title']}}">{{$city['title']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -665,18 +657,9 @@
                                 <div class="header__block-list-1-btn-y-2">
                                     <select id="headerCatalog">
                                         <option value=""></option>
-                                        <option value="Подари сердце">Подари сердце</option>
-                                        <option value="Подарочные наборы">Подарочные наборы</option>
-                                        <option value="8 марта">8 марта</option>
-                                        <option value="Подари сердце">Подари сердце</option>
-                                        <option value="Подарочные наборы">Подарочные наборы</option>
-                                        <option value="8 марта">8 марта</option>
-                                        <option value="Подари сердце">Подари сердце</option>
-                                        <option value="Подарочные наборы">Подарочные наборы</option>
-                                        <option value="8 марта">8 марта</option>
-                                        <option value="Подари сердце">Подари сердце</option>
-                                        <option value="Подарочные наборы">Подарочные наборы</option>
-                                        <option value="8 марта">8 марта</option>
+                                        @foreach($categories as $category)
+                                        <option value="{{$category['name']}}">{{$category['name']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -712,7 +695,7 @@
                 </ul>
                 <ul class="header__block-list-2">
                     <li class="header__block-list-2-item header__block-list-2-item-create">
-                        <a href="">
+                        <a href="{{route('constructor')}}">
                             <div class="header__block-list-2-btn-b">
                                 <div class="header__block-list-2-btn-b-1">
                                     <div class="header__block-list-2-btn-b-2">
@@ -739,7 +722,7 @@
                         </a>
                     </li>
                     <li class="header__block-list-2-item header__block-list-2-item-order">
-                        <a href="order.html">
+                        <a href="{{route('urgently')}}">
                             <div class="header__block-list-2-btn-r">
                                 <div class="header__block-list-2-btn-r-1">
                                     <div class="header__block-list-2-btn-r-2">
@@ -1000,7 +983,7 @@
                 </a>
                 <ul class="header__block-menu-list">
                     <li class="header__block-menu-list-phone">
-                        <a href="#">
+                        <a href="tel:88005057233">
                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.83933 9.3491C4.22654 11.0073 5.89644 12.3129 7.8024 13.2368C8.52806 13.5807 9.49852 13.9887 10.5797 14.0586C10.6468 14.0615 10.7109 14.0644 10.7779 14.0644C11.5036 14.0644 12.0864 13.8138 12.5615 13.298C12.5644 13.2951 12.5702 13.2892 12.5731 13.2834C12.7421 13.0794 12.9345 12.8958 13.1356 12.7005C13.2725 12.5694 13.4124 12.4324 13.5465 12.2925C14.1672 11.6456 14.1672 10.8237 13.5407 10.1972L11.7892 8.44566C11.4919 8.13674 11.1364 7.97354 10.7633 7.97354C10.3903 7.97354 10.0318 8.13674 9.72584 8.44275L8.68252 9.48607C8.58634 9.4307 8.48726 9.38115 8.394 9.33452C8.27743 9.27624 8.1696 9.22087 8.07343 9.15967C7.12336 8.5564 6.26073 7.76954 5.43598 6.75828C5.01923 6.23079 4.73946 5.78781 4.5442 5.3361C4.81815 5.08838 5.07461 4.82901 5.32232 4.57546C5.40975 4.48512 5.50009 4.39477 5.59044 4.30443C5.90518 3.98969 6.07421 3.6254 6.07421 3.25528C6.07421 2.88516 5.9081 2.52087 5.59044 2.20613L4.72197 1.33767C4.61997 1.23567 4.5238 1.13658 4.42472 1.03458C4.23237 0.836406 4.03128 0.632405 3.83311 0.448803C3.53294 0.154458 3.18031 0 2.80728 0C2.43716 0 2.08161 0.154458 1.76978 0.451717L0.679832 1.54167C0.283486 1.93801 0.0590844 2.41887 0.0124555 2.97551C-0.0429163 3.67203 0.0853132 4.41226 0.417544 5.30695C0.927548 6.69125 1.69692 7.97646 2.83933 9.3491ZM0.723546 3.03671C0.758518 2.6491 0.907148 2.32562 1.18692 2.04584L2.27104 0.961721C2.44007 0.79852 2.62659 0.714005 2.80728 0.714005C2.98505 0.714005 3.16574 0.79852 3.33185 0.96755C3.52711 1.14824 3.71071 1.33767 3.90888 1.53875C4.00797 1.64075 4.10997 1.74276 4.21197 1.84767L5.08043 2.71613C5.26112 2.89682 5.35438 3.08042 5.35438 3.26111C5.35438 3.4418 5.26112 3.6254 5.08043 3.80608C4.99009 3.89643 4.89975 3.98969 4.8094 4.08003C4.53837 4.35397 4.28483 4.61335 4.00506 4.86106C3.99923 4.86689 3.99631 4.86981 3.99048 4.87563C3.7486 5.11752 3.78648 5.34775 3.84477 5.52261C3.84768 5.53135 3.8506 5.53718 3.85351 5.54593C4.07791 6.08507 4.38974 6.59799 4.87643 7.20999C5.75073 8.28829 6.67165 9.12469 7.68582 9.76876C7.81114 9.85036 7.9452 9.91447 8.07051 9.97859C8.18708 10.0369 8.29491 10.0922 8.39109 10.1534C8.40274 10.1593 8.41149 10.1651 8.42314 10.1709C8.51932 10.2205 8.61257 10.2438 8.70583 10.2438C8.93898 10.2438 9.09052 10.0952 9.14006 10.0456L10.23 8.95566C10.399 8.78663 10.5826 8.69629 10.7633 8.69629C10.9848 8.69629 11.1655 8.83326 11.2792 8.95566L13.0365 10.7101C13.3862 11.0598 13.3833 11.4387 13.0277 11.8088C12.9053 11.9399 12.7771 12.0652 12.6401 12.1964C12.4361 12.3945 12.2234 12.5985 12.0311 12.8288C11.6959 13.1902 11.2966 13.3592 10.7808 13.3592C10.7313 13.3592 10.6788 13.3563 10.6293 13.3534C9.67338 13.2922 8.78452 12.9191 8.11714 12.6015C6.30444 11.7243 4.71323 10.4798 3.39305 8.90029C2.30601 7.59177 1.57452 6.37359 1.09075 5.06798C0.790575 4.26654 0.676917 3.62248 0.723546 3.03671Z" fill="#00FF12"/>
                             </svg>
@@ -1028,7 +1011,7 @@
                     </li>
                 </ul>
                 <ul class="header__block-menu-contact">
-                    <li class="header__block-menu-contact-car">
+                    <li class="header__block-menu-contact-car" data-bs-toggle="modal" data-bs-target="#order-pay-modal">
                         <a href="#">
                             <div class="header__block-menu-contact-bg">
                                 <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1047,7 +1030,7 @@
                         </a>
                     </li>
                     <li class="header__block-menu-contact-instagram">
-                        <a href="#">
+                        <a href="https://www.instagram.com/beehappy24.ru/">
                             <div class="header__block-menu-contact-bg">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0)">
@@ -1066,7 +1049,7 @@
                         </a>
                     </li>
                     <li class="header__block-menu-contact-vk">
-                        <a href="#">
+                        <a href="https://vk.com/id596874506">
                             <div class="header__block-menu-contact-bg">
                                 <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13.5443 5.70499C13.2921 5.36899 13.3643 5.2195 13.5443 4.91916C13.5476 4.91573 15.6296 1.88076 15.8441 0.851502L15.8454 0.850816C15.952 0.47573 15.8454 0.200073 15.3299 0.200073H13.6243C13.1901 0.200073 12.9899 0.436645 12.8826 0.70133C12.8826 0.70133 12.0142 2.89424 10.7856 4.31573C10.3891 4.72647 10.2058 4.85813 9.98935 4.85813C9.88274 4.85813 9.71699 4.72647 9.71699 4.35139V0.850816C9.71699 0.400987 9.59543 0.200073 9.23597 0.200073H6.55398C6.28162 0.200073 6.11976 0.409902 6.11976 0.60533C6.11976 1.03184 6.73403 1.1299 6.79774 2.3299V4.93356C6.79774 5.50407 6.69958 5.60899 6.48183 5.60899C5.90201 5.60899 4.49471 3.40716 3.66073 0.887159C3.49237 0.398245 3.32792 0.200759 2.89045 0.200759H1.18414C0.697274 0.200759 0.599121 0.43733 0.599121 0.702016C0.599121 1.16967 1.17894 3.49493 3.29541 6.56693C4.70596 8.66385 6.69243 9.80007 8.4995 9.80007C9.58568 9.80007 9.71829 9.54773 9.71829 9.11367C9.71829 7.11002 9.62013 6.92076 10.1642 6.92076C10.4164 6.92076 10.8506 7.05242 11.8647 8.06385C13.0237 9.26316 13.2141 9.80007 13.8628 9.80007H15.5685C16.0547 9.80007 16.3011 9.54773 16.1594 9.0499C15.835 8.00282 13.6431 5.84899 13.5443 5.70499Z" fill="white"/>
@@ -1076,7 +1059,7 @@
                         </a>
                     </li>
                     <li class="header__block-menu-contact-viber">
-                        <a href="#">
+                        <a href="viber://add?number=79891970713">
                             <div class="header__block-menu-contact-bg">
                                 <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M16.2495 10.7026C16.7542 6.45413 16.007 3.77196 14.6592 2.55882L14.6599 2.55811C12.4846 0.486391 5.13806 0.179757 2.53555 2.65116C1.36681 3.86007 0.955146 5.63432 0.910032 7.83081C0.864918 10.028 0.811345 14.144 4.64674 15.2605H4.65027L4.64674 16.9657C4.64674 16.9657 4.62066 17.6565 5.06193 17.7954C5.56664 17.9589 5.79503 17.6382 7.36486 15.7631C9.98993 15.9908 12.006 15.4692 12.2351 15.3931C12.7651 15.2154 15.7645 14.8186 16.2495 10.7026ZM7.62356 14.5634C7.62356 14.5634 5.9621 16.6351 5.4454 17.1729C5.27622 17.3478 5.09083 17.3315 5.09365 16.9847C5.09365 16.757 5.10634 14.1538 5.10634 14.1538C1.85461 13.2219 2.04634 9.71714 2.08159 7.88368C2.11683 6.04951 2.45237 4.54736 3.44206 3.53582C5.72525 1.39502 12.166 1.87365 13.807 3.41598C15.8132 5.19446 15.0991 10.219 15.1033 10.3903C14.691 13.826 12.2604 14.0439 11.8135 14.1926C11.6225 14.256 9.84966 14.7121 7.62356 14.5634Z" fill="white"/>
@@ -1090,7 +1073,7 @@
                         </a>
                     </li>
                     <li class="header__block-menu-contact-whatsapp">
-                        <a href="#">
+                        <a href="https://api.whatsapp.com/send/?phone=79891970713&text&app_absent=0">
                             <div class="header__block-menu-contact-bg">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.3045 9.38463L11.2991 9.42963C9.97967 8.77204 9.84168 8.68444 9.67128 8.94004C9.55308 9.11704 9.20869 9.51843 9.10489 9.63723C8.99989 9.75422 8.89549 9.76322 8.7173 9.68223C8.5373 9.59223 7.95951 9.40323 7.27552 8.79124C6.74273 8.31425 6.38514 7.72926 6.27954 7.54926C6.10374 7.24567 6.47154 7.20247 6.80633 6.56888C6.86633 6.44288 6.83573 6.34389 6.79133 6.25449C6.74633 6.16449 6.38814 5.2825 6.23814 4.93091C6.09414 4.58052 5.94595 4.62492 5.83495 4.62492C5.48936 4.59492 5.23676 4.59972 5.01416 4.83131C4.04578 5.89569 4.28998 6.99367 5.11856 8.16125C6.74693 10.2924 7.61452 10.6848 9.20089 11.2296C9.62928 11.3658 10.0199 11.3466 10.3289 11.3022C10.6733 11.2476 11.389 10.8696 11.5384 10.4466C11.6914 10.0236 11.6914 9.67263 11.6464 9.59163C11.602 9.51063 11.4844 9.46563 11.3045 9.38463Z" fill="white"/>
@@ -1101,7 +1084,7 @@
                         </a>
                     </li>
                     <li class="header__block-menu-contact-telegram">
-                        <a href="#">
+                        <a href="https://tlgg.ru/beehappy24ru">
                             <div class="header__block-menu-contact-bg">
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.99172 7.9088L6.71381 11.2592C7.11142 11.2592 7.28363 11.1128 7.49013 10.937L9.35428 9.41L13.217 11.8346C13.9254 12.173 14.4245 11.9948 14.6156 11.276L17.1511 1.09284L17.1518 1.09224C17.3765 0.194642 16.7731 -0.156356 16.0828 0.063843L1.17948 4.95442C0.162355 5.29282 0.177755 5.77881 1.00658 5.99901L4.81677 7.01481L13.6671 2.26823C14.0836 2.03183 14.4623 2.16263 14.1508 2.39903L6.99172 7.9088Z" fill="white"/>
@@ -1165,7 +1148,7 @@
         </div>
         <div class="media-header__block-catalog">
             <div class="media-header__block-catalog-constructor"><a href="#">Конструтор букетов</a></div>
-            <div class="media-header__block-catalog-order"><a href="#">Срочный заказ</p></div>
+            <div class="media-header__block-catalog-order"><a href="{{route('urgently')}}">Срочный заказ</p></div>
             <div class="media-header__block-catalog-florist"><a href="{{route('quiz.index')}}">Букет на вкус флориста</a></div>
         </div>
         <ul class="media-header__block-contact">
@@ -1453,12 +1436,12 @@
                 <div class="footer__block-text-catalog">
                     <div class="footer__block-text-catalog-title">Категории</div>
                     <ul class="footer__block-text-catalog-list">
-                        <li class="footer__block-text-catalog-item">Конструктор букетов</li>
+                        <li class="footer__block-text-catalog-item" onclick="location.href='{{route('constructor')}}'">Конструктор букетов</li>
                         <li class="footer__block-text-catalog-item" onclick="location.href='{{route('quiz.index')}}'">Букет на вкус флориста</li>
                         <li class="footer__block-text-catalog-item">Добавить к букету</li>
                         <li class="footer__block-text-catalog-item">Подборки</li>
                         <li class="footer__block-text-catalog-item">Монобукеты</li>
-                        <li class="footer__block-text-catalog-item">Оплата доставки за город</li>
+                        <li class="footer__block-text-catalog-item" data-bs-toggle="modal" data-bs-target="#order-pay-modal">Оплата доставки за город</li>
                     </ul>
                 </div>
                 <div class="footer__block-text-info">
@@ -1552,8 +1535,70 @@
     </div>
 </footer>
 
-
+{{--Delivery pay--}}
+<div class="modal fade" id="order-pay-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content model-catalog text-center">
+            <button type="button" class="btn-close model-catalog-btn" data-bs-dismiss="modal" aria-label="Close">
+                <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.3281 22.3296L40.2735 40.275" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22.1313 40.4727L40.4712 22.1328" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <h1 class="model-catalog__card-info-title">Оплата доставки за город</h1>
+            <div class="header-profile__status-info">
+                <form action="{{route('delivery.checkout')}}" method="POST" style="display:grid; justify-content: center; width: 100%">
+                    @csrf
+                    <input type="text" class="header-profile__status-info-input" id="number" name="number" placeholder="№ заказа">
+                    <input type="text" class="header-profile__status-info-input" id="km" name="km" placeholder="Приблизительное кол-во километров">
+                    <button class="header-profile__status-info-btn" type="submit"><a href="#">Оплатить</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End --}}
 @yield('js')
+
+<script>
+    function setCity(name){
+        location.href='/change-city/'+name
+    }
+
+    $(window).on('load', function(){
+        @php $city_name = App\Models\City::find(Cookie::get('city_id')); @endphp
+        $('.header__city-select-item').val('{{$city_name['title']}}')
+
+
+        document.getElementById('city__header_input').addEventListener("input", send_);
+        function send_(){
+            let city = $('#city__header_input').val()
+
+            $.ajax({
+                url: '{{route('city.find')}}',
+                type: "POST",
+                data: {
+                    city:city
+                },
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: (data) => {
+                   // alert(data)
+                    $('#headerCityElement').html(data)
+                },
+                error: function(request, status, error) {
+                    //   alert(statusCode = request.responseText);
+
+                }
+            })
+        }
+    })
+
+    function toCategory(name){
+        location.href='/category/middle/'+name
+    }
+</script>
 <script src="/js/script.min.js"></script>
 </body>
 </html>

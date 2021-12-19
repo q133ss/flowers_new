@@ -20,13 +20,12 @@
                     <div class="new-content__block-text-title">Новости</div>
                     <div class="new-content__block-text-select">
                         <select id="sort">
-                            <option value="Дате публикации" rel="icon-temperature">Дате публикации</option>
-                            <option value="Дате публикации">Дате публикации</option>
-                            <option value="Дате публикации">Дате публикации</option>
+                            <option class="sort-item" value="new" rel="icon-temperature">Сначала новые</option>
+                            <option class="sort-item" value="old">Сначала старые</option>
                         </select>
                     </div>
                 </div>
-                <div class="new-content__block-table">
+                <div class="new-content__block-table" id="news_sort">
                     @include('news.items', compact('news'))
                 </div>
 
@@ -38,4 +37,53 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        $("li[rel^='new']").addClass('new_');
+        $("li[rel^='old']").addClass('old_');
+        $('.new_').click(function(){
+            $.ajax({
+                url: '{{route('news.sort', 'new')}}',
+                type: "POST",
+                data: {
+                },
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: (data) => {
+                    //alert(data)
+                    $('#news_sort').html(data)
+                },
+                error: function(request, status, error) {
+                    //    alert(statusCode = request.responseText);
+
+                }
+            })
+        })
+        $('.old_').click(function(){
+
+            $.ajax({
+                url: '{{route('news.sort', 'old')}}',
+                type: "POST",
+                data: {
+                },
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: (data) => {
+                  //   alert(data)
+                    $('#news_sort').html(data)
+                },
+                error: function(request, status, error) {
+                   //    alert(statusCode = request.responseText);
+
+                }
+            })
+
+        })
+        });
+    </script>
+@endsection
+@section('js')
+
 @endsection

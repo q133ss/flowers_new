@@ -98,6 +98,9 @@ Route::middleware(['isUserCity'])->group(function () {
         Route::get('/balls', [BallsController::class, 'index'])->name('profile.balls');
         Route::get('/notifications', [NotificationsController::class, 'index'])->name('profile.notifications');
         Route::get('/events', [EventController::class, 'index'])->name('profile.event');
+        Route::post('/event/create', [EventController::class, 'create'])->name('profile.event.create');
+        Route::post('/event/edit/{id}', [EventController::class, 'edit'])->name('profile.event.edit');
+        Route::post('/event/date/edit/', [EventController::class, 'edit_date'])->name('profile.event.date.update');
         Route::get('/stock', [StockController::class, 'index'])->name('profile.stock');
         Route::get('/donat', [DonatController::class, 'index'])->name('profile.donat');
         Route::post('/donat/submit', [DonatController::class, 'submit'])->name('profile.manager.donat');

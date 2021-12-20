@@ -130,8 +130,8 @@ class ProductController extends Controller
                 $sale = $request['path-sale'.$count];
                 $charge = $request['path-charge'.$count];
 
-                $product_path->model = $model;
-                $product_path->model_id = $model_id;
+                $product_path->locable_type = $model;
+                $product_path->locable_id = $model_id;
                 $product_path->product_id = $product_id;
                 $product_path->status = $status;
                 $product_path->price = $price;
@@ -181,8 +181,8 @@ class ProductController extends Controller
                 $sale = $request['path-size-sale'.$count];
                 $main = $request['main1'];
 
-                $product_path->model = $model;
-                $product_path->model_id = $model_id;
+                $product_path->locable_type = $model;
+                $product_path->locable_id = $model_id;
                 $product_path->product_id = $product_id;
                 $product_path->size_id = $size_id;
                 $product_path->status = $status;
@@ -322,8 +322,8 @@ class ProductController extends Controller
                 $sale = $request['path-sale'.$count];
                 $charge = $request['path-charge'.$count];
 
-                $product_path->model = $model;
-                $product_path->model_id = $model_id;
+                $product_path->locable_type = $model;
+                $product_path->locable_id = $model_id;
                 $product_path->product_id = $product_id;
                 $product_path->status = $status;
                 $product_path->price = $price;

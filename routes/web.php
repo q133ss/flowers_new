@@ -59,7 +59,7 @@ use App\Http\Controllers\SubscribeViewController;
 |
 */
 
-Auth::routes();
+//Auth::routes();
 Route::get('/city', [CityController::class, 'index'])->name('city');
 Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city');
 Route::get('/change-city/{name}', [CityController::class, 'changeCity'])->name('change.city');

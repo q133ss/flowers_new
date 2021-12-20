@@ -59,7 +59,7 @@ use App\Http\Controllers\SubscribeViewController;
 |
 */
 
-//Auth::routes();
+    Auth::routes();
 Route::get('/city', [CityController::class, 'index'])->name('city');
 Route::get('/set-city/{id}', [CityController::class, 'setCity'])->name('set.city');
 Route::get('/change-city/{name}', [CityController::class, 'changeCity'])->name('change.city');
@@ -263,6 +263,6 @@ Route::get('/order', [OrderController::class, 'index']);
 // /aditionaly
 
 
-Auth::routes();
+//Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
